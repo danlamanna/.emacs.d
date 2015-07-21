@@ -1,0 +1,46 @@
+(prodigy-define-service
+  :name "Girder Dev"
+  :command "python"
+  :cwd "/home/dan.lamanna/projects/girder"
+  :args '("-m" "girder")
+  :init (lambda ()
+          (venv-workon "girder-source"))
+  :tags '(girder))
+
+(prodigy-define-service
+  :name "Girder Dev Grunt"
+  :command "grunt"
+  :cwd "/home/dan.lamanna/projects/girder"
+  :args '("watch" "--debug-js")
+  :init (lambda ()
+          (venv-workon "girder-source"))
+  :tags '(girder grunt))
+
+(prodigy-define-service
+  :name "Memex Tempus"
+  :command "python"
+  :cwd "/home/dan.lamanna/projects/memex/smqtk/python/smqtk/web/geospace/src"
+  :args '("main.py")
+  :init (lambda ()
+          (venv-workon "memex-tempus"))
+  :tags '(memex smqtk))
+
+(prodigy-define-service
+  :name "Memex Notebooks"
+  :command "ipython"
+  :cwd "/home/dan.lamanna/projects/memex/notebooks"
+  :args '("notebook" "--no-browser" "--ip=0.0.0.0" "--port=8889")
+  :init (lambda ()
+          (venv-workon "memex-tempus"))
+  :tags '(memex ipython)
+  :kill-signal 'sigkill
+  :kill-process-buffer-on-stop t)
+
+(prodigy-define-service
+  :name "XData Notebooks"
+  :command "ipython"
+  :cwd "/home/dan.lamanna/projects/xdata"
+  :args '("notebook" "--no-browser" "--ip=0.0.0.0" "--port=8888")
+  :tags '(xdata ipython))
+
+(provide 'dl-work-prodigy)
