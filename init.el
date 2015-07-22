@@ -387,6 +387,9 @@
   :demand t
   :config (ido-ubiquitous-mode 1))
 
+;; jade-mode
+(use-package-ensure jade-mode)
+
 ;; js2-mode
 ;; @todo mozrepl, swank, slime, kite?
 (use-package-ensure js2-mode
@@ -687,3 +690,5 @@
 
 ;; todo:
 ;; visual regexp/steroids
+;; bookmarks
+;; find-dired bind
