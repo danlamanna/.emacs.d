@@ -309,6 +309,10 @@
           (add-hook 'before-revert-hook (lambda()
                                           (kill-ring-save (point-min) (point-max))))))
 
+;; find-dired
+(use-package find-dired
+  :bind ("C-c f" . find-dired))
+
 ;; flycheck
 (use-package-ensure flycheck)
 
@@ -691,4 +695,3 @@
 ;; todo:
 ;; visual regexp/steroids
 ;; bookmarks
-;; find-dired bind
