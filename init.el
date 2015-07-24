@@ -353,6 +353,13 @@
                                      (mode . prodigy-mode)
                                      (mode . prodigy-view-mode)))
                          ("terminals" (mode . term-mode))
+                         ("magit" (or
+                                   (mode . magit-mode)
+                                   (mode . magit-log-mode)
+                                   (mode . magit-process-mode)
+                                   (mode . magit-diff-mode)
+                                   (mode . magit-stash-mode)))
+                         ("helm" (mode . helm-mode))
                          ("misc" (or
                                   (name . "^\\*scratch\\*$")
                                   (name . "^\\*Messages\\*$")))))))

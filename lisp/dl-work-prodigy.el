@@ -17,6 +17,15 @@
   :tags '(girder grunt))
 
 (prodigy-define-service
+  :name "GeoJS Grunt"
+  :command "grunt"
+  :cwd "/home/dan.lamanna/projects/geojs"
+  :args '("watch")
+  :init (lambda ()
+          (venv-workon "geojs-source"))
+  :tags '(geojs grunt))
+
+(prodigy-define-service
   :name "Memex Tempus"
   :command "python"
   :cwd "/home/dan.lamanna/projects/memex/smqtk/python/smqtk/web/geospace/src"
