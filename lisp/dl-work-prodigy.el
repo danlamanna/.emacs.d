@@ -1,7 +1,7 @@
 (prodigy-define-service
   :name "Girder Dev"
   :command "python"
-  :cwd "/home/dan.lamanna/projects/girder"
+  :cwd (concat (expand-file-name "~") "/projects/girder")
   :args '("-m" "girder")
   :init (lambda ()
           (venv-workon "girder-source"))
@@ -10,7 +10,7 @@
 (prodigy-define-service
   :name "Girder Dev Grunt"
   :command "grunt"
-  :cwd "/home/dan.lamanna/projects/girder"
+  :cwd (concat (expand-file-name "~") "/projects/girder")
   :args '("watch" "--debug-js")
   :init (lambda ()
           (venv-workon "girder-source"))
@@ -28,7 +28,7 @@
 (prodigy-define-service
   :name "Memex Tempus"
   :command "python"
-  :cwd "/home/dan.lamanna/projects/memex/smqtk/python/smqtk/web/geospace/src"
+  :cwd (concat (expand-file-name "~") "/projects/memex/smqtk/python/smqtk/web/geospace/src")
   :args '("main.py")
   :init (lambda ()
           (venv-workon "memex-tempus"))
@@ -37,7 +37,7 @@
 (prodigy-define-service
   :name "Memex Notebooks"
   :command "ipython"
-  :cwd "/home/dan.lamanna/projects/memex/notebooks"
+  :cwd (concat (expand-file-name "~") "/projects/memex/notebooks")
   :args '("notebook" "--no-browser" "--ip=0.0.0.0" "--port=8889")
   :init (lambda ()
           (venv-workon "memex-tempus"))
@@ -48,7 +48,7 @@
 (prodigy-define-service
   :name "XData Notebooks"
   :command "ipython"
-  :cwd "/home/dan.lamanna/projects/xdata"
+  :cwd (concat (expand-file-name "~") "/projects/xdata")
   :args '("notebook" "--no-browser" "--ip=0.0.0.0" "--port=8888")
   :tags '(xdata ipython))
 
