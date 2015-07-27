@@ -454,6 +454,8 @@
             ;; custom set this?
             (setq magit-completing-read-function 'magit-ido-completing-read)
 
+            (custom-set-variables
+             '(magit-push-always-verify nil))
 
             (defadvice magit-status (around magit-fullscreen activate)
               "Always fullscreen magit."
