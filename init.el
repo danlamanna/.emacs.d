@@ -549,7 +549,7 @@
 
 ;; prodigy
 (use-package-ensure prodigy
-  :bind ("C-c p" . prodigy)
+  :bind ("C-c P" . prodigy)
   :config (progn
             (require 'dl-work-prodigy nil 'noerror)))
 
