@@ -703,7 +703,6 @@
 ;; visual regexp/steroids
 ;; bookmarks
 ;; autoparens and yas-expand issue
-;;
 
 
 (use-package-ensure helm
@@ -712,7 +711,8 @@
          ("C-x b" . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("M-x" . helm-M-x)
-         ("M-y" . helm-show-kill-ring))
+         ("M-y" . helm-show-kill-ring)
+         ("M-s o" . helm-occur))
   :config (progn
             (require 'helm-config)
 
@@ -732,3 +732,15 @@
 
 
             (helm-mode 1)))
+
+(use-package-ensure projectile
+  :demand t
+  :config (progn
+            (projectile-global-mode)))
+
+(use-package-ensure helm-projectile
+  :demand t
+  :config (progn
+            (helm-projectile-on)))
+
+(use-package-ensure helm-ag)
