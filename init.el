@@ -335,6 +335,9 @@
                   (gist-region (region-beginning) (region-end) arg)
                 (gist-buffer arg)))))
 
+;; grunt
+(use-package-ensure grunt)
+
 ;; highlight-symbol
 (use-package-ensure highlight-symbol
   :bind ("M-s h s" . highlight-symbol))
@@ -414,11 +417,17 @@
             (add-hook 'js2-mode-hook 'rainbow-mode)
             (add-hook 'js2-mode-hook 'company-mode)
             (add-hook 'js2-mode-hook 'tern-mode)
-            (add-hook 'js2-mode-hook 'flycheck-mode))
+            (add-hook 'js2-mode-hook 'flycheck-mode)
+
+            (add-hook 'js2-mode-hook #'jscs-indent-apply))
   :mode ("\\.js\\'" . js2-mode))
 
 ;; js2-refactor
 (use-package-ensure js2-refactor)
+
+;; jscs
+(use-package jscs
+  :load-path "site-lisp/jscs/")
 
 ;; jump-char
 (use-package-ensure jump-char
