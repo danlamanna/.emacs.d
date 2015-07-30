@@ -255,6 +255,9 @@
          ("C-x C-r" . rename-current-buffer-file)
          ("C-x C-k" . delete-current-buffer-file))
   :init (progn
+          (custom-set-variables
+           '(require-final-newline t))
+
           ;; taken from http://www.emacswiki.org/emacs/RevertBuffer
           (defun revert-all-buffers ()
             "Refreshes all open buffers from their respective files."
@@ -381,7 +384,6 @@
 
             (setq
              ido-save-directory-list-file (format "%s/ido.last" emacs-tmp-dir)
-             ido-ignore-buffers '(".*Completion" "\\*")
              ido-work-directory-list '("~/" "~/projects")
              ido-enable-flex-matching t
              ido-case-fold t
@@ -478,7 +480,9 @@
               (kill-buffer)
               (jump-to-register :magit-fullscreen))
 
-            (bind-key "q" 'magit-quit-session magit-status-mode-map)))
+            (bind-key "q" 'magit-quit-session magit-status-mode-map)
+
+            (add-hook 'magit-status-mode-hook 'magit-toggle-margin)))
 
 ;; menu-bar
 (use-package menu-bar

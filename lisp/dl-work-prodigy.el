@@ -52,4 +52,10 @@
   :args '("notebook" "--no-browser" "--ip=0.0.0.0" "--port=8888")
   :tags '(xdata ipython))
 
+(prodigy-define-service
+  :name "/serve"
+  :command "python"
+  :cwd "/serve"
+  :args '("-m" "SimpleHTTPServer" "8000"))
+
 (provide 'dl-work-prodigy)
