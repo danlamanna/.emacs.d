@@ -338,6 +338,10 @@
                   (gist-region (region-beginning) (region-end) arg)
                 (gist-buffer arg)))))
 
+;; git-timemachine
+(use-package-ensure git-timemachine
+  :bind ("C-c t" . git-timemachine))
+
 ;; grunt
 (use-package-ensure grunt)
 
@@ -730,6 +734,10 @@
          ("M-s o" . helm-occur))
   :config (progn
             (require 'helm-config)
+
+            (setq helm-M-x-fuzzy-match t
+                  helm-buffers-fuzzy-matching t
+                  helm-recentf-fuzzy-match t)
 
             (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
             (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
