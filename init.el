@@ -722,6 +722,10 @@
 ;; visual regexp/steroids
 ;; bookmarks
 ;; autoparens and yas-expand issue
+;; insert-pair
+;; helm-swoop
+;; project/dirlocals
+;; ace-jump-zap/avy?
 
 
 (use-package-ensure helm
