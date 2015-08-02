@@ -731,6 +731,7 @@
 (use-package-ensure helm
   :demand t
   :bind (("C-c h" . helm-command-prefix)
+         ("C-c l" . helm-locate)
          ("C-x b" . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("M-x" . helm-M-x)
@@ -771,3 +772,7 @@
             (helm-projectile-on)))
 
 (use-package-ensure helm-ag)
+(use-package term
+  :config (progn
+            (add-hook 'term-mode-hook (lambda()
+                                        (yas-minor-mode -1)))))
