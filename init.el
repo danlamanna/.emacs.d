@@ -410,6 +410,12 @@
 ;; jade-mode
 (use-package-ensure jade-mode)
 
+;; jasminejs-mode
+(use-package-ensure jasminejs-mode
+  :bind ("C-c j" . jasminejs-prefix-map)
+  :config (progn
+            (add-hook 'jasminejs-mode-hook 'jasminejs-add-snippets-to-yas-snippet-dirs)))
+
 ;; js2-mode
 ;; @todo mozrepl, swank, slime, kite?
 (use-package-ensure js2-mode
@@ -434,6 +440,10 @@
 ;; jscs
 (use-package jscs
   :load-path "site-lisp/jscs/")
+
+;; json-mode
+(use-package-ensure json-mode
+  :mode ("\\.json\\'" . json-mode))
 
 ;; jump-char
 (use-package-ensure jump-char
@@ -737,6 +747,9 @@
 ;; helm-swoop
 ;; project/dirlocals
 ;; ace-jump-zap/avy?
+;; pdf tools
+;; openwith
+;; elisp eldoc etc
 
 
 (use-package-ensure helm
