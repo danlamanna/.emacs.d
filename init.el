@@ -630,6 +630,17 @@
   :config (progn
             (add-hook 'stylus-mode-hook 'rainbow-mode)))
 
+;; term/ansi-term
+(use-package term
+  :init (progn
+          (defun ansi-term-zsh()
+            (interactive)
+            (ansi-term "/bin/zsh")))
+  :bind ("C-c q" . ansi-term-zsh)
+  :config (progn
+            (add-hook 'term-mode-hook (lambda()
+                                        (yas-minor-mode -1)))))
+
 ;; tern
 (use-package-ensure tern)
 
@@ -772,7 +783,12 @@
             (helm-projectile-on)))
 
 (use-package-ensure helm-ag)
-(use-package term
-  :config (progn
-            (add-hook 'term-mode-hook (lambda()
-                                        (yas-minor-mode -1)))))
+
+;; load project specific functionality
+(let ((project-dir (concat emacs-config-dir "/lisp/projects")))
+  (if (file-exists-p project-dir)
+      (progn
+        (add-to-list 'load-path project-dir)
+        (mapc (lambda(proj)
+                (require (intern (file-name-sans-extension proj))))
+              (directory-files project-dir nil "\\.el$")))))
