@@ -20,6 +20,9 @@
           (venv-workon girder-venv))
   :tags '(girder grunt))
 
+(add-to-list 'safe-local-variable-values
+             '(compile-command . (format "cd %s && ctest -j4" girder-build-dir)))
+
 (dir-locals-set-class-variables 'girder
                                 `((nil . ((compile-command . (format "cd %s && ctest -j4" girder-build-dir))))
                                   (js2-mode . ((flycheck-jshintrc . ,(concat girder-project-dir "/tests/jshint.cfg"))
