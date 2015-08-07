@@ -745,7 +745,6 @@
 ;; autoparens and yas-expand issue
 ;; insert-pair
 ;; helm-swoop
-;; project/dirlocals
 ;; ace-jump-zap/avy?
 ;; pdf tools
 ;; openwith

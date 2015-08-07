@@ -1,6 +1,6 @@
 (setq girder-project-dir "~/projects/girder")
 (setq girder-build-dir "~/projects/girder-build")
-(setq girder-venv "girder-source")
+(setq girder-venv "girder")
 
 (prodigy-define-service
   :name "Girder Dev"

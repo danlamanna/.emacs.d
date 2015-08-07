@@ -2,7 +2,7 @@
 
 (setq geojs-project-dir "~/projects/geojs")
 (setq geojs-build-dir "~/projects/geojs-build")
-(setq geojs-venv "geojs-source")
+(setq geojs-venv "geojs")
 
 (add-to-list 'safe-local-variable-values
              '(compile-command . (format "cd %s && ctest" geojs-build-dir)))
