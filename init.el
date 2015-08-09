@@ -749,6 +749,8 @@
 ;; pdf tools
 ;; openwith
 ;; elisp eldoc etc
+;; flyspell-prog-mode for comments
+;; wget file into buffer as contents
 
 
 (use-package-ensure helm
