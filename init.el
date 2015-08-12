@@ -67,6 +67,7 @@
  '(magit-diff-arguments (quote ("--ignore-all-space")))
  '(magit-diff-options (quote ("--ignore-all-space")))
  '(magit-use-overlays nil)
+ '(mouse-autoselect-window t)
  '(next-line-add-newlines t)
  '(org-agenda-custom-commands
    (quote
@@ -749,6 +750,8 @@
 ;; pdf tools
 ;; openwith
 ;; elisp eldoc etc
+;; flyspell-prog-mode for comments
+;; wget file into buffer as contents
 
 
 (use-package-ensure helm
