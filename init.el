@@ -752,6 +752,8 @@
 ;; elisp eldoc etc
 ;; flyspell-prog-mode for comments
 ;; wget file into buffer as contents
+;; cmake/make on git checkout?
+;; per project, defproject?
 
 
 (use-package-ensure helm
