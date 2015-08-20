@@ -751,10 +751,10 @@
 ;; openwith
 ;; elisp eldoc etc
 ;; flyspell-prog-mode for comments
-;; wget file into buffer as contents
+;; wget file into buffer as contents/scratch buffer?
 ;; cmake/make on git checkout?
 ;; per project, defproject?
-
+;; travis integration https://github.com/nlamirault/emacs-travis
 
 (use-package-ensure helm
   :demand t
