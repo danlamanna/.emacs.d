@@ -755,6 +755,7 @@
 ;; cmake/make on git checkout?
 ;; per project, defproject?
 ;; travis integration https://github.com/nlamirault/emacs-travis
+;; per project git hooks on checkout, cmake/pip
 
 (use-package-ensure helm
   :demand t
