@@ -483,6 +483,9 @@
             (custom-set-variables
              '(magit-push-always-verify nil))
 
+            ;; add --first-parent to the log view
+            (magit-define-popup-switch 'magit-log-popup ?f "first parent" "--first-parent")
+
             (defadvice magit-status (around magit-fullscreen activate)
               "Always fullscreen magit."
               (window-configuration-to-register :magit-fullscreen)
@@ -810,3 +813,7 @@
         (mapc (lambda(proj)
                 (require (intern (file-name-sans-extension proj))))
               (directory-files project-dir nil "\\.el$")))))
+
+
+(use-package-ensure helm-ctest
+  :bind ("M-s t" . helm-ctest))
