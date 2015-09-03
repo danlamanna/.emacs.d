@@ -543,13 +543,15 @@
           (add-hook 'org-shiftright-final-hook 'windmove-right))
   :commands (org-mode org-agenda org-capture)
   :bind (("C-c a" . org-agenda)
-         ("C-c c" . org-capture))
+         ("C-c c" . org-capture)
+         ("<f12>" . org-agenda))
   :config (progn
             (setq org-replace-disputed-keys t)
 
             (custom-set-variables
-             '(org-agenda-files '("/home/dan.lamanna/org/notes.org"
-                                  "/home/dan.lamanna/org/todo.org"))
+             '(org-agenda-files '("/home/dan/org/notes.org"
+                                  "/home/dan/org/todo.org"
+                                  "/home/dan/kworg/notes.org"))
              '(org-agenda-custom-commands
                '(("z"
                   "Agenda and all not DONE"
@@ -563,13 +565,14 @@
                                    (isearch t)
                                    (bookmark-jump t)
                                    (agenda t)))
-             '(org-default-notes-file "/home/dan.lamanna/org/notes.org")
+             '(org-default-notes-file "/home/dan/org/notes.org")
              '(org-refile-use-outline-path 'file)
              '(org-completion-use-ido t)
              '(org-outline-path-complete-in-steps nil)
              '(org-refile-allow-creating-parent-nodes 'confirm)
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
-             '(org-todo-keywords '("TODO" "DONE" "MEETING" "ON HOLD"))
+             '(org-todo-keywords '((sequence "TODO(t)" "DONE(d)" "|" "ON HOLD(h)")))
+             '(org-use-fast-todo-selection t)
              '(org-capture-templates
                '(("t" "TODO" entry
                   (file+headline "~/org/todo.org" "Tasks")
