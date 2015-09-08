@@ -106,7 +106,7 @@
      (isearch t)
      (bookmark-jump t)
      (agenda t))))
- '(org-todo-keywords (quote ("TODO" "DONE" "MEETING" "ON HOLD")))
+ '(org-todo-keywords (quote ("TODO" "DONE" "ON HOLD")))
  '(reb-re-syntax (quote string))
  '(save-interprogram-paste-before-kill t)
  '(show-paren-style (quote mixed))
@@ -557,7 +557,6 @@
                   "Agenda and all not DONE"
                   ((agenda "")
                    (todo "TODO")
-                   (todo "MEETING")
                    (todo "ON HOLD")))))
              '(org-agenda-weekend-days nil) ;; stop highlighting saturday/sunday
              '(org-agenda-window-setup 'other-frame) ;; open agenda in new frame
@@ -571,7 +570,7 @@
              '(org-outline-path-complete-in-steps nil)
              '(org-refile-allow-creating-parent-nodes 'confirm)
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
-             '(org-todo-keywords '((sequence "TODO(t)" "DONE(d)" "|" "ON HOLD(h)")))
+             '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h!)" "|" "DONE(d!)")))
              '(org-use-fast-todo-selection t)
              '(org-capture-templates
                '(("t" "TODO" entry
