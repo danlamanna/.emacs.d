@@ -570,10 +570,13 @@
              '(org-outline-path-complete-in-steps nil)
              '(org-refile-allow-creating-parent-nodes 'confirm)
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
-             '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h!)" "|" "DONE(d!)")))
+             '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h@)" "|" "DONE(d!)")))
              '(org-use-fast-todo-selection t)
              '(org-capture-templates
-               '(("t" "TODO" entry
+               '(("w" "Work TODO" entry
+                  (file+headline "~/kworg/notes.org" "Misc")
+                  "* TODO %? \n %i")
+                 ("t" "TODO" entry
                   (file+headline "~/org/todo.org" "Tasks")
                   "* TODO %? :current:\n %i")
                  ("m" "Meeting" entry
