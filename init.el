@@ -80,7 +80,7 @@
       ((agenda "")
        (todo "TODO")
        (todo "ON HOLD"))
-      ((org-agenda-files '("~/org/notes.org"))))
+      ((org-agenda-files '("~/org/notes.org" "~/org/csi660.org"))))
      ("m" "Mixed"
       ((agenda "")
        (todo "TODO")
@@ -571,12 +571,12 @@
                   ((agenda "")
                    (todo "TODO")
                    (todo "ON HOLD"))
-                  ((org-agenda-files '("~/org/notes.org"))))
+                  ((org-agenda-files '("~/org/notes.org" "~/org/csi660.org"))))
                  ("m" "Mixed"
                   ((agenda "")
                    (todo "TODO")
                    (todo "ON HOLD"))
-                  ((org-agenda-files '("~/org/notes.org" "~/kworg/notes.org"))))))
+                  ((org-agenda-files '("~/org/notes.org" "~/org/csi660.org" "~/kworg/notes.org"))))))
              '(org-agenda-weekend-days nil) ;; stop highlighting saturday/sunday
              '(org-agenda-window-setup 'other-frame) ;; open agenda in new frame
              '(org-show-siblings '((default . nil)
