@@ -71,31 +71,37 @@
  '(next-line-add-newlines t)
  '(org-agenda-custom-commands
    (quote
-    (("z" "Agenda and all not DONE"
+    (("w" "Work"
       ((agenda "")
        (todo "TODO")
-       (todo "MEETING")
-       (todo "ON HOLD"))))))
- '(org-agenda-files
-   (quote
-    ("/home/dan.lamanna/org/notes.org" "/home/dan.lamanna/org/todo.org")))
+       (todo "ON HOLD"))
+      ((org-agenda-files '("~/kworg/notes.org"))))
+     ("p" "Personal"
+      ((agenda "")
+       (todo "TODO")
+       (todo "ON HOLD"))
+      ((org-agenda-files '("~/org/notes.org"))))
+     ("m" "Mixed"
+      ((agenda "")
+       (todo "TODO")
+       (todo "ON HOLD"))
+      ((org-agenda-files '("~/org/notes.org" "~/kworg/notes.org")))))))
+ '(org-agenda-files (quote ("~/kworg/notes.org")))
  '(org-agenda-span (quote week))
  '(org-agenda-weekend-days nil)
  '(org-agenda-window-setup (quote other-frame))
  '(org-capture-templates
    (quote
-    (("t" "TODO" entry
-      (file+headline "~/org/todo.org" "Tasks")
-      "* TODO %? :current:
+    (("w" "Work TODO" entry
+      (file+headline "~/kworg/notes.org" "Unfiled")
+      "* TODO %?
  %i")
-     ("m" "Meeting" entry
-      (file+headline "~/org/todo.org" "Meetings")
-      "* Meeting %? :current:
- %i")
-     ("z" "Misc" entry
-      (file+headline "~/org/todo.org" "Misc")))))
+     ("p" "Personal TODO" entry
+      (file+headline "~/org/notes.org" "Unfiled")
+      "* TODO %?
+ %i"))))
  '(org-completion-use-ido t)
- '(org-default-notes-file "/home/dan.lamanna/org/notes.org")
+ '(org-default-notes-file "/home/dan/org/notes.org")
  '(org-outline-path-complete-in-steps nil)
  '(org-refile-allow-creating-parent-nodes (quote confirm))
  '(org-refile-targets (quote ((org-agenda-files :maxlevel . 8))))
@@ -106,8 +112,12 @@
      (isearch t)
      (bookmark-jump t)
      (agenda t))))
- '(org-todo-keywords (quote ("TODO" "DONE" "ON HOLD")))
+ '(org-todo-keywords
+   (quote
+    ((sequence "TODO(t!)" "ON HOLD(h@)" "|" "DONE(d!)"))))
+ '(org-use-fast-todo-selection t)
  '(reb-re-syntax (quote string))
+ '(require-final-newline t)
  '(save-interprogram-paste-before-kill t)
  '(show-paren-style (quote mixed))
  '(tramp-default-method "ssh")
@@ -550,14 +560,23 @@
 
             (custom-set-variables
              '(org-agenda-files '("/home/dan/org/notes.org"
-                                  "/home/dan/org/todo.org"
                                   "/home/dan/kworg/notes.org"))
              '(org-agenda-custom-commands
-               '(("z"
-                  "Agenda and all not DONE"
+               '(("w" "Work"
                   ((agenda "")
                    (todo "TODO")
-                   (todo "ON HOLD")))))
+                   (todo "ON HOLD"))
+                  ((org-agenda-files '("~/kworg/notes.org"))))
+                 ("p" "Personal"
+                  ((agenda "")
+                   (todo "TODO")
+                   (todo "ON HOLD"))
+                  ((org-agenda-files '("~/org/notes.org"))))
+                 ("m" "Mixed"
+                  ((agenda "")
+                   (todo "TODO")
+                   (todo "ON HOLD"))
+                  ((org-agenda-files '("~/org/notes.org" "~/kworg/notes.org"))))))
              '(org-agenda-weekend-days nil) ;; stop highlighting saturday/sunday
              '(org-agenda-window-setup 'other-frame) ;; open agenda in new frame
              '(org-show-siblings '((default . nil)
@@ -574,16 +593,13 @@
              '(org-use-fast-todo-selection t)
              '(org-capture-templates
                '(("w" "Work TODO" entry
-                  (file+headline "~/kworg/notes.org" "Misc")
-                  "* TODO %? \n %i")
-                 ("t" "TODO" entry
-                  (file+headline "~/org/todo.org" "Tasks")
-                  "* TODO %? :current:\n %i")
-                 ("m" "Meeting" entry
-                  (file+headline "~/org/todo.org" "Meetings")
-                  "* Meeting %? :current:\n %i")
-                 ("z" "Misc" entry
-                  (file+headline "~/org/todo.org" "Misc")))))))
+                  (file+headline "~/kworg/notes.org" "Unfiled")
+                  "* TODO %?
+ %i")
+                 ("p" "Personal TODO" entry
+                  (file+headline "~/org/notes.org" "Unfiled")
+                  "* TODO %?
+ %i"))))))
 
 ;; prodigy
 (use-package-ensure prodigy
