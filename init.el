@@ -606,6 +606,10 @@
   :config (progn
             (require 'dl-work-prodigy nil 'noerror)))
 
+(use-package prog-mode
+  :init (progn
+          (add-hook 'prog-mode-hook 'column-number-mode)))
+
 ;; python
 (use-package python
   :init (progn
