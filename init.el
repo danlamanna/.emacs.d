@@ -559,31 +559,29 @@
             (setq org-replace-disputed-keys t)
 
             (custom-set-variables
-             '(org-agenda-files '("/home/dan/org/notes.org"
-                                  "/home/dan/kworg/notes.org"))
+             '(org-agenda-files '("~/org" "~/kworg"))
              '(org-agenda-custom-commands
                '(("w" "Work"
                   ((agenda "")
                    (todo "TODO")
                    (todo "ON HOLD"))
-                  ((org-agenda-files '("~/kworg/notes.org"))))
+                  ((org-agenda-files '("~/kworg"))))
                  ("p" "Personal"
                   ((agenda "")
                    (todo "TODO")
                    (todo "ON HOLD"))
-                  ((org-agenda-files '("~/org/notes.org" "~/org/csi660.org"))))
+                  ((org-agenda-files '("~/org"))))
                  ("m" "Mixed"
                   ((agenda "")
                    (todo "TODO")
                    (todo "ON HOLD"))
-                  ((org-agenda-files '("~/org/notes.org" "~/org/csi660.org" "~/kworg/notes.org"))))))
+                  ((org-agenda-files '("~/org" "~/kworg"))))))
              '(org-agenda-weekend-days nil) ;; stop highlighting saturday/sunday
              '(org-agenda-window-setup 'other-frame) ;; open agenda in new frame
              '(org-show-siblings '((default . nil)
                                    (isearch t)
                                    (bookmark-jump t)
                                    (agenda t)))
-             '(org-default-notes-file "/home/dan/org/notes.org")
              '(org-refile-use-outline-path 'file)
              '(org-completion-use-ido t)
              '(org-outline-path-complete-in-steps nil)
@@ -591,13 +589,14 @@
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
              '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h@)" "|" "DONE(d!)")))
              '(org-use-fast-todo-selection t)
+             '(org-log-done 'time)
              '(org-capture-templates
                '(("w" "Work TODO" entry
                   (file+headline "~/kworg/notes.org" "Unfiled")
                   "* TODO %?
  %i")
                  ("p" "Personal TODO" entry
-                  (file+headline "~/org/notes.org" "Unfiled")
+                  (file+headline "~/org/todo.org" "Unfiled")
                   "* TODO %?
  %i"))))))
 
