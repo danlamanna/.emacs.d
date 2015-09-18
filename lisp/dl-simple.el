@@ -17,7 +17,7 @@
 ;; coding standards
 ;; both these lists should be lowercased
 (setq no-cleanup-filenames '("makefile" "rules"))
-(setq no-cleanup-extensions '("md" "org" "xml" "tsv" "csv" "config" "conf"))
+(setq no-cleanup-extensions '("md" "org" "xml" "tsv" "csv" "config" "conf" "rst"))
 
 (defun should-cleanup-buffer?()
   "Returns t if the buffer is an actual file, the files extension isn't in no-cleanup-extensions,
