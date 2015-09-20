@@ -248,6 +248,12 @@
 (use-package-ensure edbi
   :bind ("C-c d" . edbi:open-db-viewer))
 
+;; emacs-lisp-mode
+(use-package emacs-lisp-mode
+  :init (progn
+          (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+          (add-hook 'emacs-lisp-mode-hook 'pretty-lambda-mode )))
+
 ;; executable
 (use-package executable
   :init (progn
@@ -599,6 +605,9 @@
                   (file+headline "~/org/todo.org" "Unfiled")
                   "* TODO %?
  %i"))))))
+
+;; pretty-lambdada
+(use-package-ensure pretty-lambdada)
 
 ;; prodigy
 (use-package-ensure prodigy
