@@ -571,7 +571,7 @@
                   ((agenda "")
                    (todo "TODO")
                    (todo "ON HOLD"))
-                  ((org-agenda-files '("~/kworg"))))
+                  ((org-agenda-files '("~/kworg" "~/kworg/calendars/dan.lamanna.org"))))
                  ("p" "Personal"
                   ((agenda "")
                    (todo "TODO")
@@ -605,6 +605,35 @@
                   (file+headline "~/org/todo.org" "Unfiled")
                   "* TODO %?
  %i"))))))
+
+;; org-gcal
+(use-package org-gcal
+  :load-path "site-lisp/org-gcal.el/"
+  :config (progn
+            (defun org-gcal-attendance-filter (event)
+              "Determine if I am attending `event'. Err on the side of
+               caution, so if it can't be determined, leave it there just in case."
+              (let* ((attendees (plist-get event :attendees))
+                     (self (cl-find-if (lambda (attendee)
+                                         (plist-get attendee :self)) attendees)))
+                (if (or (not attendees)
+                        (not self))
+                    t
+                  (not (string= "declined"
+                                (plist-get self :responseStatus))))))
+
+            ;; org-gcal--notify does all sorts of annoying things with logo images?
+            ;; redefine it to not be so awful
+            (defun org-gcal--notify (title mes)
+              (message (format "%s | %s" title mes)))
+
+            (custom-set-variables
+             '(org-gcal-auto-archive nil)
+             '(org-gcal-fetch-event-filters '(org-gcal-attendance-filter)))
+
+            (when (file-exists-p "~/.emacs.d/lisp/org-gcal-credentials.el")
+              (require 'org-gcal-credentials)
+              (run-at-time 0 3600 'org-gcal-fetch))))
 
 ;; pretty-lambdada
 (use-package-ensure pretty-lambdada)
