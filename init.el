@@ -590,6 +590,7 @@
                                    (agenda t)))
              '(org-refile-use-outline-path 'file)
              '(org-completion-use-ido t)
+             '(org-image-actual-width nil)
              '(org-outline-path-complete-in-steps nil)
              '(org-refile-allow-creating-parent-nodes 'confirm)
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
