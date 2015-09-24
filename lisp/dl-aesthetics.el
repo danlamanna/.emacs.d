@@ -4,6 +4,9 @@
   :config (custom-set-variables
            '(show-paren-style 'mixed)))
 
+(setq default-frame-alist '((cursor-color . "white")
+                            (scroll-bar-mode . -1)))
+
 (menu-bar-mode -1)
 
 (if (fboundp 'tool-bar-mode)
