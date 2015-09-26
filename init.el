@@ -594,7 +594,7 @@
              '(org-outline-path-complete-in-steps nil)
              '(org-refile-allow-creating-parent-nodes 'confirm)
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
-             '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h@)" "|" "DONE(d!)")))
+             '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h@)" "|" "DONE(d!)" "INVALID(i@)")))
              '(org-use-fast-todo-selection t)
              '(org-log-done 'time)
              '(org-capture-templates
