@@ -583,7 +583,10 @@
                    (todo "ON HOLD"))
                   ((org-agenda-files '("~/org" "~/kworg"))))))
              '(org-agenda-weekend-days nil) ;; stop highlighting saturday/sunday
-             '(org-agenda-window-setup 'other-frame) ;; open agenda in new frame
+             '(org-agenda-skip-deadline-if-done t)
+             '(org-agenda-skip-scheduled-if-done t)
+             '(org-agenda-start-on-weekday nil) ;; start agenda calendar on today
+             '(org-agenda-ndays 5)
              '(org-show-siblings '((default . nil)
                                    (isearch t)
                                    (bookmark-jump t)
