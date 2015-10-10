@@ -89,7 +89,6 @@
  '(org-agenda-files (quote ("~/kworg/notes.org")))
  '(org-agenda-span (quote week))
  '(org-agenda-weekend-days nil)
- '(org-agenda-window-setup (quote other-frame))
  '(org-capture-templates
    (quote
     (("w" "Work TODO" entry
@@ -251,8 +250,11 @@
 ;; emacs-lisp-mode
 (use-package emacs-lisp-mode
   :init (progn
+          ;; pretty-lambdada
+          (use-package-ensure pretty-lambdada)
+
           (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-          (add-hook 'emacs-lisp-mode-hook 'pretty-lambda-mode )))
+          (add-hook 'emacs-lisp-mode-hook 'pretty-lambda-mode)))
 
 ;; executable
 (use-package executable
@@ -610,10 +612,21 @@
                   "* TODO %?
  %i"))))))
 
+;; org-babel
+(use-package org-babel
+  :config (progn
+            (org-babel-do-load-languages
+             'org-babel-load-languages
+             '((sh . t)
+               (emacs-lisp . nil)))))
+
 ;; org-gcal
 (use-package org-gcal
   :load-path "site-lisp/org-gcal.el/"
   :config (progn
+            (use-package-ensure alert)
+            (use-package-ensure request-deferred)
+
             (defun org-gcal-attendance-filter (event)
               "Determine if I am attending `event'. Err on the side of
                caution, so if it can't be determined, leave it there just in case."
@@ -638,9 +651,6 @@
             (when (file-exists-p "~/.emacs.d/lisp/org-gcal-credentials.el")
               (require 'org-gcal-credentials)
               (run-at-time 0 3600 'org-gcal-fetch))))
-
-;; pretty-lambdada
-(use-package-ensure pretty-lambdada)
 
 ;; prodigy
 (use-package-ensure prodigy
