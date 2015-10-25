@@ -16,9 +16,14 @@
   (package-install 'use-package))
 
 (require 'use-package)
-(setq use-package-always-ensure t)
 
-(use-package dash
+(defmacro use-package-ensure(package &rest body)
+  (declare (indent 1))
+  `(use-package ,package
+     :ensure t
+     ,@body))
+
+(use-package-ensure dash
   :demand t)
 
 ;; custom faces
@@ -129,14 +134,14 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; ace-jump-mode
-(use-package ace-jump-mode
+(use-package-ensure ace-jump-mode
   :bind ("C-x SPC" . ace-jump-mode-pop-mark)
   :commands (ace-jump-word-mode
              ace-jump-char-mode
              ace-jump-line-mode))
 
 ;; ag
-(use-package ag
+(use-package-ensure ag
   :init (custom-set-variables
          '(ag-highlight-search t))
   :config (progn
@@ -151,10 +156,10 @@
            '(bookmark-save-flag t)))
 
 ;; company
-(use-package company)
+(use-package-ensure company)
 
 ;; company-tern
-(use-package company-tern
+(use-package-ensure company-tern
   :config (progn
             (add-to-list 'company-backends 'company-tern)))
 
@@ -235,17 +240,17 @@
   :bind (("C-c n" . buffer-cleanup)))
 
 ;; dockerfile-mode
-(use-package dockerfile-mode)
+(use-package-ensure dockerfile-mode)
 
 ;; edbi
-(use-package edbi
+(use-package-ensure edbi
   :bind ("C-c d" . edbi:open-db-viewer))
 
 ;; emacs-lisp-mode
 (use-package emacs-lisp-mode
   :init (progn
           ;; pretty-lambdada
-          (use-package pretty-lambdada)
+          (use-package-ensure pretty-lambdada)
 
           (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
           (add-hook 'emacs-lisp-mode-hook 'pretty-lambda-mode)))
@@ -259,7 +264,7 @@
                                          (executable-make-buffer-file-executable-if-script-p))))))
 
 ;; expand-region
-(use-package expand-region
+(use-package-ensure expand-region
   :bind ("C-q" . er/expand-region))
 
 ;; files
@@ -330,10 +335,10 @@
   :bind ("C-c f" . find-dired))
 
 ;; flycheck
-(use-package flycheck)
+(use-package-ensure flycheck)
 
 ;; framemove
-(use-package framemove
+(use-package-ensure framemove
   :config (progn
             (require 'windmove)
             (require 'cl)
@@ -342,7 +347,7 @@
             (setq framemove-hook-into-windmove t)))
 
 ;; gist
-(use-package gist
+(use-package-ensure gist
   :bind ("C-c h" . actual-gist-region-or-buffer)
   :config (progn
             (defun actual-gist-region-or-buffer(arg)
@@ -356,14 +361,14 @@
   :bind ("C-c g" . git-link))
 
 ;; git-timemachine
-(use-package git-timemachine
+(use-package-ensure git-timemachine
   :bind ("C-c t" . git-timemachine))
 
 ;; grunt
-(use-package grunt)
+(use-package-ensure grunt)
 
 ;; highlight-symbol
-(use-package highlight-symbol
+(use-package-ensure highlight-symbol
   :bind ("M-s h s" . highlight-symbol))
 
 ;; ibuffer
@@ -420,22 +425,22 @@
 
 ;; ido-ubiquitous
 ;; puts ido everywhere, including webjump
-(use-package ido-ubiquitous
+(use-package-ensure ido-ubiquitous
   :demand t
   :config (ido-ubiquitous-mode 1))
 
 ;; jade-mode
-(use-package jade-mode)
+(use-package-ensure jade-mode)
 
 ;; jasminejs-mode
-(use-package jasminejs-mode
+(use-package-ensure jasminejs-mode
   :bind ("C-c j" . jasminejs-prefix-map)
   :config (progn
             (add-hook 'jasminejs-mode-hook 'jasminejs-add-snippets-to-yas-snippet-dirs)))
 
 ;; js2-mode
 ;; @todo mozrepl, swank, slime, kite?
-(use-package js2-mode
+(use-package-ensure js2-mode
   ;; flycheck does checking for jshint and jscs
   :config (progn
             (custom-set-variables
@@ -452,24 +457,24 @@
   :mode ("\\.js\\'" . js2-mode))
 
 ;; js2-refactor
-(use-package js2-refactor)
+(use-package-ensure js2-refactor)
 
 ;; jscs
 (use-package jscs
   :load-path "site-lisp/jscs/")
 
 ;; json-mode
-(use-package json-mode
+(use-package-ensure json-mode
   :mode ("\\.json\\'" . json-mode))
 
 ;; jump-char
-(use-package jump-char
+(use-package-ensure jump-char
   :bind (("M-n" . jump-char-forward)
          ("M-p" . jump-char-backward))
   :config (bind-key "<return>" 'jump-char-exit jump-char-isearch-map))
 
 ;; key-chord
-(use-package key-chord
+(use-package-ensure key-chord
   :init (key-chord-mode +1)
   :config (progn
             (key-chord-define-global "1n" #'flycheck-next-error)
@@ -487,7 +492,7 @@
   :init (add-hook 'lisp-mode-hook 'eldoc-mode))
 
 ;; magit
-(use-package magit
+(use-package-ensure magit
   :bind ("C-x s" . magit-status)
   :init (progn
           (setq magit-last-seen-setup-instructions "1.4.0")
@@ -523,14 +528,14 @@
   :bind ("C-x k" . kill-this-buffer))
 
 ;; multiple-cursors
-(use-package multiple-cursors
+(use-package-ensure multiple-cursors
   :bind (("C-c SPC" . set-rectangular-region-anchor)
          ("C->"     . mc/mark-next-like-this)
          ("C-<"     . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
 
 ;; multi-term
-(use-package multi-term)
+(use-package-ensure multi-term)
 
 ;; newcomment
 (use-package newcomment
@@ -546,7 +551,7 @@
 ;; org-mode
 (use-package org
   :init (progn
-          (use-package org-bullets
+          (use-package-ensure org-bullets
             :init (add-hook 'org-mode-hook #'org-bullets-mode))
 
           (require 'windmove)
@@ -622,8 +627,8 @@
 (use-package org-gcal
   :load-path "site-lisp/org-gcal.el/"
   :config (progn
-            (use-package alert)
-            (use-package request-deferred)
+            (use-package-ensure alert)
+            (use-package-ensure request-deferred)
 
             (defun org-gcal-attendance-filter (event)
               "Determine if I am attending `event'. Err on the side of
@@ -651,7 +656,7 @@
               (run-at-time 0 3600 'org-gcal-fetch))))
 
 ;; prodigy
-(use-package prodigy
+(use-package-ensure prodigy
   :bind ("C-c P" . prodigy)
   :config (progn
             (require 'dl-work-prodigy nil 'noerror)))
@@ -663,7 +668,7 @@
 ;; python
 (use-package python
   :init (progn
-          (use-package elpy
+          (use-package-ensure elpy
             :pin elpy
             :commands elpy-mode)
 
@@ -673,11 +678,11 @@
   :commands python-mode)
 
 ;; rainbow-mode
-(use-package rainbow-mode
+(use-package-ensure rainbow-mode
   :pin gnu)
 
 ;; restclient
-(use-package restclient
+(use-package-ensure restclient
   :init (progn
           (defun scratch-restclient()
             (interactive)
@@ -688,14 +693,14 @@
   :bind ("C-c v" . scratch-restclient))
 
 ;; smartparens
-(use-package smartparens
+(use-package-ensure smartparens
   :demand t
   :config (progn
             (require 'smartparens-config)
             (smartparens-global-mode)))
 
 ;; smart-tab
-(use-package smart-tab
+(use-package-ensure smart-tab
   :init (global-smart-tab-mode 1)
   :config (progn
             (setq smart-tab-using-hippie-expand t)
@@ -710,11 +715,11 @@
   :diminish smart-tab-mode)
 
 ;; smex
-(use-package smex
+(use-package-ensure smex
   :bind ("M-x" . smex))
 
 ;; stylus-mode
-(use-package stylus-mode
+(use-package-ensure stylus-mode
   :config (progn
             (add-hook 'stylus-mode-hook 'rainbow-mode)))
 
@@ -730,7 +735,7 @@
                                         (yas-minor-mode -1)))))
 
 ;; tern
-(use-package tern)
+(use-package-ensure tern)
 
 ;; tramp
 (use-package tramp
@@ -748,7 +753,7 @@
         (goto-char pos)))))
 
 ;; undo-tree
-(use-package undo-tree
+(use-package-ensure undo-tree
   :demand t ;; load it immediately, undo-tree-visualize isn't autoloaded?
   :config (progn
             (global-undo-tree-mode)
@@ -768,7 +773,7 @@
            uniquify-ignore-buffers-re "^\\*")))
 
 ;; virtualenvwrapper
-(use-package virtualenvwrapper)
+(use-package-ensure virtualenvwrapper)
 
 ;; webjump
 (use-package webjump
@@ -780,7 +785,7 @@
 
 ;; web-mode
 ;; @todo web-mode-jshint
-(use-package web-mode
+(use-package-ensure web-mode
   :config (progn
             (add-hook 'web-mode-hook 'rainbow-mode))
   :mode ("\\.html\\'" . web-mode))
@@ -797,10 +802,10 @@
   :config (winner-mode t))
 
 ;; yaml-mode
-(use-package yaml-mode)
+(use-package-ensure yaml-mode)
 
 ;; yasnippet
-(use-package yasnippet
+(use-package-ensure yasnippet
   :config (progn
             (yas-global-mode 1)
             (setq yas-trigger-key "TAB")
@@ -811,7 +816,7 @@
             (yas/reload-all)))
 
 ;; zencoding-mode
-(use-package zencoding-mode
+(use-package-ensure zencoding-mode
   :pin melpa
   :bind ("<C-tab>" . zencoding-expand-yas)
   :config (progn
@@ -834,7 +839,7 @@
 ;; travis integration https://github.com/nlamirault/emacs-travis
 ;; per project git hooks on checkout, cmake/pip
 
-(use-package helm
+(use-package-ensure helm
   :demand t
   :bind (("C-c h" . helm-command-prefix)
          ("C-c l" . helm-locate)
@@ -867,17 +872,17 @@
 
             (helm-mode 1)))
 
-(use-package projectile
+(use-package-ensure projectile
   :demand t
   :config (progn
             (projectile-global-mode)))
 
-(use-package helm-projectile
+(use-package-ensure helm-projectile
   :demand t
   :config (progn
             (helm-projectile-on)))
 
-(use-package helm-ag)
+(use-package-ensure helm-ag)
 
 ;; load project specific functionality
 (let ((project-dir (concat emacs-config-dir "/lisp/projects")))
@@ -889,5 +894,5 @@
               (directory-files project-dir nil "\\.el$")))))
 
 
-(use-package helm-ctest
+(use-package-ensure helm-ctest
   :bind ("M-s t" . helm-ctest))
