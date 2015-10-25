@@ -137,7 +137,6 @@
 
 ;; ag
 (use-package ag
-  :bind ("C-c g" . ag)
   :init (custom-set-variables
          '(ag-highlight-search t))
   :config (progn
@@ -351,6 +350,10 @@
               (if (region-active-p)
                   (gist-region (region-beginning) (region-end) arg)
                 (gist-buffer arg)))))
+
+;; git-link
+(use-package git-link
+  :bind ("C-c g" . git-link))
 
 ;; git-timemachine
 (use-package git-timemachine
