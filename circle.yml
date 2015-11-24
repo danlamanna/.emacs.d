@@ -1,0 +1,6 @@
+dependencies:
+  pre:
+    - sudo apt-get update; sudo apt-get install emacs24
+test:
+  override:
+    - emacs --batch --load .emacs.d/init.el
