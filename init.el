@@ -908,5 +908,13 @@
 
             (add-hook 'after-save-hook 'bootleg-grunt-watch)))
 
+(use-package-ensure defproject
+  :demand t
+  :config (progn
+            (defproject minerva
+              :path "/home/dan/projects/minerva-container/girder/plugins/minerva"
+              :vars ((grunt-dir "/home/dan/projects/minerva-container/girder")))))
+
+
 (use-package-ensure helm-ctest
   :bind ("M-s t" . helm-ctest))
