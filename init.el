@@ -402,28 +402,6 @@
           (add-hook 'ibuffer-mode-hook (lambda ()
                                          (ibuffer-switch-to-saved-filter-groups "default")))))
 
-;; ido
-(use-package ido
-  :config (progn
-            ;;(fset 'read-directory-name 'ido-read-directory-name) not sure
-            (ido-everywhere t) ;; helps with dired
-
-            (ido-mode 'both)
-
-            (setq
-             ido-save-directory-list-file (format "%s/ido.last" emacs-tmp-dir)
-             ido-work-directory-list '("~/" "~/projects")
-             ido-enable-flex-matching t
-             ido-case-fold t
-             ido-enable-last-directory-history t
-             ido-max-directory-size 1000000
-             ido-max-work-directory-list 100
-             ido-max-work-file-list 100
-             ido-use-filename-at-point nil
-             ido-use-url-at-point nil
-             ido-max-prospects 10
-             ido-create-new-buffer 'always
-             ido-confirm-unique-completion nil)))
 
 ;; ido-ubiquitous
 ;; puts ido everywhere, including webjump
