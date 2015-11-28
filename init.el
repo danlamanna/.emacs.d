@@ -214,18 +214,24 @@
   :demand t
   :init (progn
           (setq
+           auto-save-interval 30
            emacs-autosave-dir (concat emacs-tmp-dir "/autosaves/")
            auto-save-list-file-prefix emacs-autosave-dir
            auto-save-file-name-transforms `((".*" ,emacs-autosave-dir t))
            vc-make-backup-files t ;; backup version controlled files, too
            backup-by-copying t ;; no symlinks
            delete-old-versions t ;; no confirm
-           kept-new-versions 10
-           kept-old-versions 0
+           kept-new-versions 20
+           kept-old-versions 20
            version-control t ;; number backups
            backup-directory-alist
            `(("." . ,(expand-file-name
-                      (concat emacs-tmp-dir "/backups")))))))
+                      (concat emacs-tmp-dir "/backups")))))
+
+          ;; backup every save, instead of just the first time in the buffer
+          (defun force-backup-of-buffer ()
+            (setq buffer-backed-up nil))
+          (add-hook 'before-save-hook  'force-backup-of-buffer)))
 
 ;; dl-misc
 (use-package dl-misc
@@ -324,11 +330,7 @@
                 (when (yes-or-no-p "Are you sure you want to remove this file? ")
                   (delete-file filename)
                   (kill-buffer buffer)
-                  (message "File '%s' successfully removed" filename)))))
-
-          ;; maybe autosave instead of cluttering the kill ring?
-          (add-hook 'before-revert-hook (lambda()
-                                          (kill-ring-save (point-min) (point-max))))))
+                  (message "File '%s' successfully removed" filename)))))))
 
 ;; find-dired
 (use-package find-dired
