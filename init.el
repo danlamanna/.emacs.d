@@ -893,6 +893,28 @@
                 (require (intern (file-name-sans-extension proj))))
               (directory-files project-dir nil "\\.el$")))))
 
+(use-package-ensure bpr
+  :demand t
+  :config (progn
+            (defun bootleg-grunt-watch()
+              (when (and (boundp 'grunt-dir)
+                         (-contains? '("js" "jade" "styl")
+                                     (file-name-extension buffer-file-name)))
+                (let ((bpr-colorize-output t)
+                      (bpr-close-after-success t)
+                      (bpr-process-mode #'comint-mode)
+                      (default-directory grunt-dir))
+                  (bpr-spawn "./node_modules/grunt-cli/bin/grunt --debug-js"))))
+
+            (add-hook 'after-save-hook 'bootleg-grunt-watch)))
+
+(use-package-ensure defproject
+  :demand t
+  :config (progn
+            (defproject minerva
+              :path "/home/dan/projects/minerva-container/girder/plugins/minerva"
+              :vars ((grunt-dir "/home/dan/projects/minerva-container/girder")))))
+
 
 (use-package-ensure helm-ctest
   :bind ("M-s t" . helm-ctest))
