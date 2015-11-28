@@ -717,6 +717,11 @@
 (use-package-ensure smex
   :bind ("M-x" . smex))
 
+;; sphinx-doc
+(use-package-ensure sphinx-doc
+  :config (progn
+            (add-hook 'python-mode-hook 'sphinx-doc-mode)))
+
 ;; stylus-mode
 (use-package-ensure stylus-mode
   :config (progn
