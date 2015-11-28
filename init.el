@@ -369,6 +369,39 @@
 ;; grunt
 (use-package-ensure grunt)
 
+;; helm-dash
+(use-package-ensure helm-dash
+  :config (progn
+            (setq helm-dash-browser-func 'eww
+                  helm-dash-common-docsets '("Ansible"
+                                             "BackboneJS"
+                                             "CMake"
+                                             "D3JS"
+                                             "Docker"
+                                             "ElasticSearch"
+                                             "Flask"
+                                             "Grunt"
+                                             "Jade"
+                                             "Jasmine"
+                                             "JavaScript"
+                                             "Lo-Dash"
+                                             "MomentJS"
+                                             "Pandas"
+                                             "PostgreSQL"
+                                             "Python 2"
+                                             "Python 3"
+                                             "Redis"
+                                             "SQLAlchemy"
+                                             "Stylus"
+                                             "Twisted"
+                                             "UnderscoreJS"
+                                             "Vagrant"
+                                             "jQuery"))
+
+            ;; find all common docsets that aren't installed, install them
+            (-map 'helm-dash-install-docset
+                  (-difference helm-dash-common-docsets (helm-dash-installed-docsets)))))
+
 ;; highlight-symbol
 (use-package-ensure highlight-symbol
   :bind ("M-s h s" . highlight-symbol))
