@@ -460,8 +460,7 @@
 (use-package-ensure js2-refactor)
 
 ;; jscs
-(use-package jscs
-  :load-path "site-lisp/jscs/")
+(use-package-ensure jscs)
 
 ;; json-mode
 (use-package-ensure json-mode
