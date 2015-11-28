@@ -62,7 +62,7 @@
  '(interprogram-paste-function (quote x-cut-buffer-or-selection-value) t)
  '(js2-mode-show-parse-errors nil)
  '(js2-strict-missing-semi-warning nil)
- '(large-file-warning-threshold 1000000000)
+ '(large-file-warning-threshold 100000000)
  '(magit-auto-revert-mode nil)
  '(magit-diff-arguments (quote ("--ignore-all-space")))
  '(magit-diff-options (quote ("--ignore-all-space")))
@@ -780,6 +780,11 @@
 
 ;; virtualenvwrapper
 (use-package-ensure virtualenvwrapper)
+
+;; vlf
+(use-package-ensure vlf
+  :config (progn
+            (require 'vlf-setup)))
 
 ;; webjump
 (use-package webjump
