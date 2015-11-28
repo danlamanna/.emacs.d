@@ -43,12 +43,12 @@
  '(ag-highlight-search t)
  '(auto-save-interval 60)
  '(bookmark-save-flag t)
- '(browse-url-browser-function 'browse-url-generic)
+ '(browse-url-browser-function (quote browse-url-generic))
  '(browse-url-generic-program "google-chrome")
  '(confirm-nonexistent-file-or-buffer nil)
  '(custom-safe-themes
    (quote
-    ("05c3bc4eb1219953a4f182e10de1f7466d28987f48d647c01f1f0037ff35ab9a" "c3232d379e847938857ca0408b8ccb9d0aca348ace6f36a78f0f7b4c5df0115c" "f1af57ed9c239a5db90a312de03741e703f712355417662c18e3f66787f94cbe" "18a33cdb764e4baf99b23dcd5abdbf1249670d412c6d3a8092ae1a7b211613d5" default)))
+    ("30b7087fdd149a523aa614568dc6bacfab884145f4a67d64c80d6011d4c90837" "05c3bc4eb1219953a4f182e10de1f7466d28987f48d647c01f1f0037ff35ab9a" "c3232d379e847938857ca0408b8ccb9d0aca348ace6f36a78f0f7b4c5df0115c" "f1af57ed9c239a5db90a312de03741e703f712355417662c18e3f66787f94cbe" "18a33cdb764e4baf99b23dcd5abdbf1249670d412c6d3a8092ae1a7b211613d5" default)))
  '(dired-dwim-target t)
  '(dired-listing-switches "-alh")
  '(dired-recursive-copies (quote always))
@@ -75,17 +75,23 @@
       ((agenda "")
        (todo "TODO")
        (todo "ON HOLD"))
-      ((org-agenda-files '("~/kworg/notes.org"))))
+      ((org-agenda-files
+        (quote
+         ("~/kworg/notes.org")))))
      ("p" "Personal"
       ((agenda "")
        (todo "TODO")
        (todo "ON HOLD"))
-      ((org-agenda-files '("~/org/notes.org" "~/org/csi660.org"))))
+      ((org-agenda-files
+        (quote
+         ("~/org/notes.org" "~/org/csi660.org")))))
      ("m" "Mixed"
       ((agenda "")
        (todo "TODO")
        (todo "ON HOLD"))
-      ((org-agenda-files '("~/org/notes.org" "~/kworg/notes.org")))))))
+      ((org-agenda-files
+        (quote
+         ("~/org/notes.org" "~/kworg/notes.org"))))))))
  '(org-agenda-files (quote ("~/kworg/notes.org")))
  '(org-agenda-span (quote week))
  '(org-agenda-weekend-days nil)
@@ -368,6 +374,37 @@
 
 ;; grunt
 (use-package-ensure grunt)
+
+;; helm
+(use-package-ensure helm
+  :demand t
+  :bind (("C-c h" . helm-command-prefix)
+         ("C-c l" . helm-locate)
+         ("C-x b" . helm-mini)
+         ("C-x C-f" . helm-find-files)
+         ("M-x" . helm-M-x)
+         ("M-y" . helm-show-kill-ring)
+         ("M-s o" . helm-occur))
+  :config (progn
+            (require 'helm-config)
+
+            (setq helm-M-x-fuzzy-match t
+                  helm-buffers-fuzzy-matching t
+                  helm-recentf-fuzzy-match t)
+
+            (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+            (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+            (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+
+            (when (executable-find "curl")
+              (setq helm-google-suggest-use-curl-p t))
+
+            (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+                  helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+                  helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+                  helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+                  helm-ff-file-name-history-use-recentf t)
+            (helm-mode 1)))
 
 ;; helm-dash
 (use-package-ensure helm-dash
@@ -726,10 +763,6 @@
                     try-expand-dabbrev-from-kill)))
   :diminish smart-tab-mode)
 
-;; smex
-(use-package-ensure smex
-  :bind ("M-x" . smex))
-
 ;; sphinx-doc
 (use-package-ensure sphinx-doc
   :config (progn
@@ -828,12 +861,12 @@
 
 ;; yasnippet
 (use-package-ensure yasnippet
+  :init (progn
+          (setq yas-snippet-dirs
+                '("~/.emacs.d/etc/snippets")))
   :config (progn
             (yas-global-mode 1)
             (setq yas-trigger-key "TAB")
-
-            (setq yas-snippet-dirs
-                  '("~/.emacs.d/etc/snippets"))
 
             (yas/reload-all)))
 
@@ -861,39 +894,6 @@
 ;; travis integration https://github.com/nlamirault/emacs-travis
 ;; per project git hooks on checkout, cmake/pip
 
-(use-package-ensure helm
-  :demand t
-  :bind (("C-c h" . helm-command-prefix)
-         ("C-c l" . helm-locate)
-         ("C-x b" . helm-mini)
-         ("C-x C-f" . helm-find-files)
-         ("M-x" . helm-M-x)
-         ("M-y" . helm-show-kill-ring)
-         ("M-s o" . helm-occur))
-  :config (progn
-            (require 'helm-config)
-
-            (setq helm-M-x-fuzzy-match t
-                  helm-buffers-fuzzy-matching t
-                  helm-recentf-fuzzy-match t)
-
-            (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
-            (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
-            (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-
-            (when (executable-find "curl")
-              (setq helm-google-suggest-use-curl-p t))
-
-            (setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-                  helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-                  helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-                  helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-                  helm-ff-file-name-history-use-recentf t)
-
-
-
-            (helm-mode 1)))
-
 (use-package-ensure projectile
   :demand t
   :config (progn
@@ -905,15 +905,6 @@
             (helm-projectile-on)))
 
 (use-package-ensure helm-ag)
-
-;; load project specific functionality
-(let ((project-dir (concat emacs-config-dir "/lisp/projects")))
-  (if (file-exists-p project-dir)
-      (progn
-        (add-to-list 'load-path project-dir)
-        (mapc (lambda(proj)
-                (require (intern (file-name-sans-extension proj))))
-              (directory-files project-dir nil "\\.el$")))))
 
 (use-package-ensure bpr
   :demand t
@@ -930,12 +921,12 @@
 
             (add-hook 'after-save-hook 'bootleg-grunt-watch)))
 
-(use-package-ensure defproject
-  :demand t
-  :config (progn
-            (defproject minerva
-              :path "/home/dan/projects/minerva-container/girder/plugins/minerva"
-              :vars ((grunt-dir "/home/dan/projects/minerva-container/girder")))))
+;; (use-package-ensure defproject
+;;   :demand t
+;;   :config (progn
+;;             (defproject minerva
+;;               :path "/home/dan/projects/minerva-container/girder/plugins/minerva"
+;;               :vars ((grunt-dir "/home/dan/projects/minerva-container/girder")))))
 
 
 (use-package-ensure helm-ctest
