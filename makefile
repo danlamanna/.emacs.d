@@ -4,7 +4,7 @@ build:
 	docker build -t emacs@git-$(HEAD) .
 
 test: build
-	docker run --volume /root -it emacs@git-$(HEAD) --batch --load /emacs/init.el
+	docker run --rm --volume /root -it emacs@git-$(HEAD) --batch --load /emacs/init.el
 
 clean:
 	docker rmi --force emacs@git-$(HEAD)
