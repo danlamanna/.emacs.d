@@ -619,6 +619,8 @@
             (setq org-replace-disputed-keys t)
 
             (custom-set-variables
+             '(org-enforce-todo-dependencies t)
+             '(org-agenda-dim-blocked-tasks t)
              '(org-agenda-files '("~/org" "~/kworg"))
              '(org-agenda-custom-commands
                '(("w" "Work"
