@@ -620,7 +620,7 @@
 
             (custom-set-variables
              '(org-enforce-todo-dependencies t)
-             '(org-agenda-dim-blocked-tasks t)
+             '(org-agenda-dim-blocked-tasks 'invisible)
              '(org-agenda-files '("~/org" "~/kworg"))
              '(org-agenda-custom-commands
                '(("w" "Work"
