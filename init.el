@@ -81,6 +81,20 @@
 (use-package dl-theme
   :load-path "lisp/")
 
+(use-package elfeed-org
+  :ensure t
+  :config (progn
+            (use-package elfeed
+              :ensure t)
+
+            (use-package elfeed-goodies
+              :ensure t
+              :config (progn
+                        (elfeed-goodies/setup)))
+
+            (setq rmh-elfeed-org-files '("~/etc/elfeed.org"))
+            (elfeed-org)))
+
 (use-package dl-tramp
   :load-path "lisp/")
 
