@@ -258,6 +258,17 @@
 (use-package-ensure edbi
   :bind ("C-c d" . edbi:open-db-viewer))
 
+;; elfeed-org
+(use-package-ensure elfeed-org
+  :config (progn
+            (use-package-ensure elfeed)
+            (use-package-ensure elfeed-goodies
+              :config (progn
+                        (elfeed-goodies/setup)))
+
+            (setq rmh-elfeed-org-files '("~/etc/elfeed.org"))
+            (elfeed-org)))
+
 ;; emacs-lisp-mode
 (use-package emacs-lisp-mode
   :init (progn
