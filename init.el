@@ -349,10 +349,6 @@
                   (kill-buffer buffer)
                   (message "File '%s' successfully removed" filename)))))))
 
-;; find-dired
-(use-package find-dired
-  :bind ("C-c f" . find-dired))
-
 ;; flycheck
 (use-package-ensure flycheck)
 
@@ -391,6 +387,7 @@
   :demand t
   :bind (("C-c h" . helm-command-prefix)
          ("C-c l" . helm-locate)
+         ("C-c f" . helm-find)
          ("C-x b" . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("M-x" . helm-M-x)
