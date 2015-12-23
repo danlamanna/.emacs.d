@@ -722,7 +722,10 @@
 
 (use-package prog-mode
   :init (progn
-          (add-hook 'prog-mode-hook 'column-number-mode)))
+          (add-hook 'prog-mode-hook 'column-number-mode)
+
+          ;; Let *-word commands work with camelCase
+          (add-hook 'prog-mode-hook 'subword-mode)))
 
 ;; python
 (use-package python
