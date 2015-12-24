@@ -736,6 +736,7 @@
 
           (add-hook 'python-mode-hook (lambda()
                                         (elpy-mode)
+                                        (flycheck-mode)
                                         (elpy-use-ipython))))
   :commands python-mode)
 
