@@ -162,7 +162,8 @@
            '(bookmark-save-flag t)))
 
 ;; company
-(use-package-ensure company)
+(use-package-ensure company
+  :config (global-company-mode))
 
 ;; company-tern
 (use-package-ensure company-tern
@@ -190,9 +191,6 @@
 
             (define-key dired-mode-map (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
             (define-key dired-mode-map (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
-
-            (put 'dired-do-copy 'ido 'find-file)
-            (put 'dired-do-rename 'ido 'find-file)
 
             ;; @todo how do these get ensured?
             ;;(require 'dired-async)
@@ -270,13 +268,13 @@
             (elfeed-org)))
 
 ;; emacs-lisp-mode
-(use-package emacs-lisp-mode
-  :init (progn
-          ;; pretty-lambdada
-          (use-package-ensure pretty-lambdada)
+(use-package lisp-mode
+  :config (progn
+            ;; pretty-lambdada
+            (use-package-ensure pretty-lambdada)
 
-          (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-          (add-hook 'emacs-lisp-mode-hook 'pretty-lambda-mode)))
+            (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+            (add-hook 'emacs-lisp-mode-hook 'pretty-lambda-mode)))
 
 ;; executable
 (use-package executable
@@ -334,20 +332,7 @@
                     (set-visited-file-name new-name)
                     (set-buffer-modified-p nil)
                     (message "File '%s' successfully renamed to '%s'"
-                             name (file-name-nondirectory new-name)))))))
-
-          (defun delete-current-buffer-file ()
-            "Removes file connected to current buffer and kills buffer."
-            (interactive)
-            (let ((filename (buffer-file-name))
-                  (buffer (current-buffer))
-                  (name (buffer-name)))
-              (if (not (and filename (file-exists-p filename)))
-                  (ido-kill-buffer)
-                (when (yes-or-no-p "Are you sure you want to remove this file? ")
-                  (delete-file filename)
-                  (kill-buffer buffer)
-                  (message "File '%s' successfully removed" filename)))))))
+                             name (file-name-nondirectory new-name)))))))))
 
 ;; flycheck
 (use-package-ensure flycheck)
@@ -481,12 +466,6 @@
                                          (ibuffer-switch-to-saved-filter-groups "default")))))
 
 
-;; ido-ubiquitous
-;; puts ido everywhere, including webjump
-(use-package-ensure ido-ubiquitous
-  :demand t
-  :config (ido-ubiquitous-mode 1))
-
 ;; jade-mode
 (use-package-ensure jade-mode)
 
@@ -555,9 +534,6 @@
           (setq magit-last-seen-setup-instructions "1.4.0")
           (add-hook 'git-commit-mode-hook 'flyspell-mode))
   :config (progn
-            ;; custom set this?
-            (setq magit-completing-read-function 'magit-ido-completing-read)
-
             (custom-set-variables
              '(magit-push-always-verify nil))
 
@@ -624,6 +600,13 @@
          ("C-c c" . org-capture)
          ("<f12>" . org-agenda))
   :config (progn
+            ;; org-babel
+            (org-babel-do-load-languages
+             'org-babel-load-languages
+             '((sh . t)
+               (emacs-lisp . nil)
+               (python . t)))
+
             (setq org-replace-disputed-keys t)
 
             (custom-set-variables
@@ -656,7 +639,6 @@
                                    (bookmark-jump t)
                                    (agenda t)))
              '(org-refile-use-outline-path 'file)
-             '(org-completion-use-ido t)
              '(org-image-actual-width nil)
              '(org-outline-path-complete-in-steps nil)
              '(org-refile-allow-creating-parent-nodes 'confirm)
@@ -673,14 +655,6 @@
                   (file+headline "~/org/todo.org" "Unfiled")
                   "* TODO %?
  %i"))))))
-
-;; org-babel
-(use-package org-babel
-  :config (progn
-            (org-babel-do-load-languages
-             'org-babel-load-languages
-             '((sh . t)
-               (emacs-lisp . nil)))))
 
 ;; org-gcal
 (use-package org-gcal
@@ -727,17 +701,20 @@
           ;; Let *-word commands work with camelCase
           (add-hook 'prog-mode-hook 'subword-mode)))
 
+
 ;; python
 (use-package python
   :init (progn
-          (use-package-ensure elpy
-            :pin elpy
-            :commands elpy-mode)
+          (use-package-ensure jedi
+            :config (progn
+                      (defun dl-jedi-setup()
+                        (setq jedi:complete-on-dot t)
+                        (setq jedi:tooltip-method nil)
+                        (jedi:setup)
+                        (company-mode -1))
+                      (add-hook 'python-mode-hook 'dl-jedi-setup)))
 
-          (add-hook 'python-mode-hook (lambda()
-                                        (elpy-mode)
-                                        (flycheck-mode)
-                                        (elpy-use-ipython))))
+          (add-hook 'python-mode-hook 'flycheck-mode))
   :commands python-mode)
 
 ;; rainbow-mode
@@ -880,14 +857,15 @@
                 '("~/.emacs.d/etc/snippets")))
   :config (progn
             (yas-global-mode 1)
-            (setq yas-trigger-key "TAB")
-
+            (define-key yas-minor-mode-map (kbd "<tab>") nil)
+            (define-key yas-minor-mode-map (kbd "TAB") nil)
+            (define-key yas-minor-mode-map (kbd "<C-tab>") 'yas-expand)
             (yas/reload-all)))
 
 ;; zencoding-mode
 (use-package-ensure zencoding-mode
   :pin melpa
-  :bind ("<C-tab>" . zencoding-expand-yas)
+  :bind ("<backtab>" . zencoding-expand-yas)
   :config (progn
             (add-hook 'web-mode-hook 'zencoding-mode)))
 
@@ -934,14 +912,6 @@
                   (bpr-spawn "./node_modules/grunt-cli/bin/grunt --debug-js"))))
 
             (add-hook 'after-save-hook 'bootleg-grunt-watch)))
-
-;; (use-package-ensure defproject
-;;   :demand t
-;;   :config (progn
-;;             (defproject minerva
-;;               :path "/home/dan/projects/minerva-container/girder/plugins/minerva"
-;;               :vars ((grunt-dir "/home/dan/projects/minerva-container/girder")))))
-
 
 (use-package-ensure helm-ctest
   :bind ("M-s t" . helm-ctest))
