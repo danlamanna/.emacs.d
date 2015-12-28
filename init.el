@@ -426,11 +426,11 @@
                                              "Twisted"
                                              "UnderscoreJS"
                                              "Vagrant"
-                                             "jQuery"))
+                                             "jQuery"))))
 
             ;; find all common docsets that aren't installed, install them
-            (-map 'helm-dash-install-docset
-                  (-difference helm-dash-common-docsets (helm-dash-installed-docsets)))))
+            ;; (-map 'helm-dash-install-docset
+            ;;       (-difference helm-dash-common-docsets (helm-dash-installed-docsets)))))
 
 ;; highlight-symbol
 (use-package-ensure highlight-symbol
@@ -739,20 +739,15 @@
             (require 'smartparens-config)
             (smartparens-global-mode)))
 
-;; smart-tab
-(use-package-ensure smart-tab
-  :init (global-smart-tab-mode 1)
-  :config (progn
-            (setq smart-tab-using-hippie-expand t)
 
-            (setq hippie-expand-try-functions-list
-                  '(yas-hippie-try-expand
-                    try-complete-file-name-partially
-                    try-expand-all-abbrevs
-                    try-expand-dabbrev
-                    try-expand-dabbrev-all-buffers
-                    try-expand-dabbrev-from-kill)))
-  :diminish smart-tab-mode)
+;;             (setq hippie-expand-try-functions-list
+;;                   '(yas-hippie-try-expand
+;;                     try-complete-file-name-partially
+;;                     try-expand-all-abbrevs
+;;                     try-expand-dabbrev
+;;                     try-expand-dabbrev-all-buffers
+;;                     try-expand-dabbrev-from-kill)))
+;;   :diminish smart-tab-mode)
 
 ;; sphinx-doc
 (use-package-ensure sphinx-doc

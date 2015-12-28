@@ -3,4 +3,5 @@ language: emacs-lisp
 services:
   - docker
 script:
+  - make test-build
   - make test
