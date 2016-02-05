@@ -32,17 +32,20 @@
                '(("w" "Work"
                   ((agenda "")
                    (todo "TODO")
-                   (todo "ON HOLD"))
+                   (todo "ON HOLD")
+                   (todo "BACKLOG"))
                   ((org-agenda-files '("~/kworg" "~/kworg/calendars/dan.lamanna.org"))))
                  ("p" "Personal"
                   ((agenda "")
                    (todo "TODO")
-                   (todo "ON HOLD"))
+                   (todo "ON HOLD")
+                   (todo "BACKLOG"))
                   ((org-agenda-files '("~/org"))))
                  ("m" "Mixed"
                   ((agenda "")
                    (todo "TODO")
-                   (todo "ON HOLD"))
+                   (todo "ON HOLD")
+                   (todo "BACKLOG"))
                   ((org-agenda-files '("~/org" "~/kworg"))))))
              '(org-agenda-weekend-days nil) ;; stop highlighting saturday/sunday
              '(org-agenda-skip-deadline-if-done t)
@@ -58,7 +61,7 @@
              '(org-outline-path-complete-in-steps nil)
              '(org-refile-allow-creating-parent-nodes 'confirm)
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
-             '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h@)" "|" "DONE(d!)" "INVALID(i@)")))
+             '(org-todo-keywords '((sequence "TODO(t!)" "ON HOLD(h@)" "BACKLOG(b!)" "|" "DONE(d!)" "INVALID(i@)")))
              '(org-use-fast-todo-selection t)
              '(org-log-done 'time)
              '(org-capture-templates
