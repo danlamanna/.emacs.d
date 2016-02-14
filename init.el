@@ -9,7 +9,8 @@
 (setq emacs-tmp-dir (expand-file-name "~/.emacs.d/tmp"))
 (setq emacs-autosave-dir (concat emacs-tmp-dir "/autosaves/"))
 (setq custom-file "~/.emacs.d/emacs-custom.el")
-(load custom-file)
+(if (f-exists? custom-file)
+    (load custom-file))
 
 (use-package ace-jump-mode
   :bind ("C-x SPC" . ace-jump-mode-pop-mark)
@@ -161,6 +162,7 @@
   :bind (("C-c h" . helm-command-prefix)
          ("C-c l" . helm-locate)
          ("C-c f" . helm-find)
+         ("C-x b" . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("M-x" . helm-M-x)
          ("M-y" . helm-show-kill-ring)
@@ -282,7 +284,12 @@ and it's name isn't in no-cleanup-filenames."
         (if (fboundp f)
             (funcall f -1))) '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 
-;; misc
+(custom-set-faces
+ '(default ((t (:family "Source Code Pro"
+                        :height 100)))))
+
+
+                        ;; misc
 (defun insert-quotations (&optional arg)
   "Enclose following ARG sexps in quotation marks.
 Leave point after open-paren."
