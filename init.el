@@ -96,12 +96,16 @@
 (use-package dl-org
   :load-path "lisp/")
 
-(use-package dl-python
-  :load-path "lisp/"
-  :demand t
-  :init (use-package jedi
-          :init (add-hook 'python-mode-hook 'dl-jedi-setup))
-  :commands python-mode)
+(use-package dl-mail
+  :load-path "lisp/")
+
+
+;; (use-package dl-python
+;;   :load-path "lisp/"
+;;   :demand t
+;;   :init (use-package jedi
+;;           :init (add-hook 'python-mode-hook 'dl-jedi-setup))
+;;   :commands python-mode)
 
 (use-package dl-web
   :load-path "lisp/"
@@ -332,3 +336,7 @@ Leave point after open-quote."
   :config (progn
             (custom-set-variables
              '(require-final-newline t))))
+(put 'narrow-to-region 'disabled nil)
+
+(add-hook 'jade-mode-hook 'highlight-indentation-mode)
+(setq highlight-indentation-offset 2)
