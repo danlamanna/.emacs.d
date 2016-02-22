@@ -75,3 +75,30 @@
  %i"))))))
 
 (provide 'dl-org)
+
+(setq org-agenda-prefix-format
+      '((agenda . "f %i %-12:c%?-12t% s")
+        (timeline . "  % s")
+        (todo . " %i %(dl-org-property-icons '(\"MU4EMAIL\" \"GHISSUE\" \"GHPR\")) ")
+        (tags . " %i %-12:c")
+        (search . " %i %-12:c")))
+
+(setq dl-org-property-icon-map '(("GHISSUE" . "!")
+                                 ("GHPR" . "↰")
+                                 ("MU4EMAIL" . "📪")))
+
+
+
+(defun dl-org-property-icons(props)
+  (s-pad-right 3 " "
+               (s-join "" (-map (lambda(prop)
+                                  (if (org-entry-properties (point) prop)
+                                      (cdr (assoc prop dl-org-property-icon-map))
+                                    " ")) props))))
+
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
