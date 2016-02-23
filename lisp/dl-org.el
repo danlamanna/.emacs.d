@@ -22,6 +22,9 @@
                (emacs-lisp . nil)
                (python . t)))
 
+            (setq org-ctrl-k-protect-subtree t)
+            (setq org-catch-invisible-edits 'error)
+
             (setq org-replace-disputed-keys t)
 
             (custom-set-variables
