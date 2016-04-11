@@ -333,6 +333,7 @@ Leave point after open-quote."
 (add-hook 'before-save-hook  'force-backup-of-buffer)
 
 (use-package files
+  :bind ("C-c C-z" . revert-buffer)
   :config (progn
             (custom-set-variables
              '(require-final-newline t))))

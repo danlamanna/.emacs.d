@@ -47,6 +47,7 @@
 (depends-on "pallet")
 (depends-on "pdf-tools")
 (depends-on "php-mode")
+(depends-on "popup")
 (depends-on "prodigy")
 (depends-on "projectile")
 (depends-on "rainbow-mode")
