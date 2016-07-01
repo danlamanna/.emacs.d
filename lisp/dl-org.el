@@ -27,6 +27,8 @@
 
             (setq org-replace-disputed-keys t)
 
+            (setq org-agenda-align-tags-to-column -100)
+
             (custom-set-variables
              '(org-enforce-todo-dependencies t)
              '(org-agenda-dim-blocked-tasks 'invisible)
