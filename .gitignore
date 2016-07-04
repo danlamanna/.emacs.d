@@ -1,10 +1,3 @@
-/ac-comphist.dat
-/elpa/
-/smex-items
-/tmp/
-/tramp
-/lisp/org-gcal-credentials.el
-/var/
-/recentf
-/lisp/mu4e-configs.el
-/.cask
+/elpa
+/emacs-custom.el
+/tmp
