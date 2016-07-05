@@ -39,6 +39,12 @@
                   ((agenda "")
                    (todo "TODO")
                    (todo "IN REVIEW")
+                   (todo "ON HOLD"))
+                  ((org-agenda-files '("~/kworg"))))
+                 ("b" "Work + Backlog"
+                  ((agenda "")
+                   (todo "TODO")
+                   (todo "IN REVIEW")
                    (todo "ON HOLD")
                    (todo "BACKLOG"))
                   ((org-agenda-files '("~/kworg"))))
