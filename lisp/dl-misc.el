@@ -9,7 +9,7 @@
 
 (custom-set-faces
  '(default ((t (:family "Source Code Pro"
-                        :height 125)))))
+                        :height 110)))))
 
 
                         ;; misc
