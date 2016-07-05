@@ -24,4 +24,7 @@
   :config (progn
             (add-hook 'jade-mode-hook 'highlight-indentation-mode)))
 
+(use-package php-mode
+  :ensure t)
+
 (provide 'dl-web)

@@ -90,6 +90,12 @@
   :ensure t
   :config (global-flycheck-mode))
 
+(use-package git-timemachine
+  :ensure t)
+
+(use-package jinja2-mode
+  :ensure t)
+
 (use-package jump-char
   :ensure t
   :bind (("M-n" . jump-char-forward)
@@ -101,6 +107,7 @@
   :ensure t
   :init (key-chord-mode 1)
   :config (progn
+            (key-chord-define-global "hh" 'helm-dash)
             (key-chord-define-global "ww" 'ace-jump-word-mode)
             (key-chord-define-global "jj" 'ace-jump-char-mode)
             (key-chord-define-global "kk" 'ace-jump-line-mode)
@@ -131,6 +138,9 @@
          ("C->"     . mc/mark-next-like-this)
          ("C-<"     . mc/mark-previous-like-this)
          ("C-c C-<" . mc/mark-all-like-this)))
+
+(use-package nginx-mode
+  :ensure t)
 
 (use-package paren
   :init (add-hook 'prog-mode-hook #'show-paren-mode)
@@ -243,3 +253,4 @@ and it's name isn't in no-cleanup-filenames."
 (set-keyboard-coding-system 'utf-8)
 (setq buffer-file-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+(put 'narrow-to-region 'disabled nil)
