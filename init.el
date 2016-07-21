@@ -93,6 +93,12 @@
 (use-package git-timemachine
   :ensure t)
 
+(use-package github-browse-file
+  :ensure t
+  :config (progn
+            (custom-set-variables
+             '(github-browse-file-show-line-at-point t))))
+
 (use-package jinja2-mode
   :ensure t)
 
