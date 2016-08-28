@@ -102,6 +102,9 @@
 (use-package jinja2-mode
   :ensure t)
 
+(use-package json-mode
+  :ensure t)
+
 (use-package jump-char
   :ensure t
   :bind (("M-n" . jump-char-forward)
