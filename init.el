@@ -263,6 +263,7 @@ and it's name isn't in no-cleanup-filenames."
 (setq buffer-file-coding-system 'utf-8)
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 (put 'narrow-to-region 'disabled nil)
+(setq inhibit-splash-screen t)
 
 (defadvice Man-quit(after maybe-close-frame activate)
   "`delete-frame-on-man-quit' is defined by an external script which
