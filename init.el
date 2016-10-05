@@ -76,6 +76,12 @@
 (use-package dl-web
   :load-path "lisp/")
 
+;; ediff
+(custom-set-variables
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-highlight-all-diffs 'nil))
+
 (use-package expand-region
   :ensure t
   :bind ("C-q" . er/expand-region))
