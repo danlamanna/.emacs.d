@@ -77,6 +77,10 @@
   :load-path "lisp/")
 
 ;; ediff
+;; expand everything that can be expanded before ediffing
+;; this is useful for org-mode and code folding
+(add-hook 'ediff-prepare-buffer-hook #'outline-show-all)
+
 (custom-set-variables
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(ediff-split-window-function 'split-window-horizontally)
