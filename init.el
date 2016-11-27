@@ -30,6 +30,9 @@
                                                  (executable-find "chromium")
                                                  (executable-find "firefox")))))
 
+(use-package cmake-mode
+  :ensure t)
+
 (use-package company
   :ensure t
   :config (global-company-mode))
