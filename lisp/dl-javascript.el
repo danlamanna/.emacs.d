@@ -2,4 +2,7 @@
   :ensure t
   :mode (("\\.js$" . js2-mode)))
 
+(use-package nvm
+  :ensure t)
+
 (provide 'dl-javascript)
