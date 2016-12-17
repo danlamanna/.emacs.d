@@ -29,4 +29,10 @@
             (define-key dired-mode-map
               (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)))
 
+(use-package peep-dired
+  :ensure t
+  :defer t
+  :bind (:map dired-mode-map
+              ("P" . peep-dired)))
+
 (provide 'dl-dired)
