@@ -199,6 +199,9 @@
          ("C-z" . quoted-insert)
          ("C-c n" . buffer-cleanup))
   :config (progn
+            (custom-set-variables
+             '(save-interprogram-paste-before-kill t))
+
             (defadvice zap-to-char (after zap-until-char (arg char) activate)
               "Makes zap-to-char act like zap-until-char."
               (insert char)
