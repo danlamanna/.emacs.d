@@ -102,7 +102,7 @@
   :bind ("C-q" . er/expand-region))
 
 (use-package files
-  :bind ("C-c C-z" . revert-buffer)
+  :bind ("C-c z" . revert-buffer)
   :config (progn
             (custom-set-variables
              '(require-final-newline t))))
