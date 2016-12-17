@@ -37,6 +37,14 @@
   :ensure t
   :config (global-company-mode))
 
+(use-package crux
+  :ensure t
+  :bind (("C-a" . crux-move-beginning-of-line)
+         ("C-c o" . crux-open-with)
+         ("C-c u" . crux-view-url)
+         ("C-x 4 t" . crux-transpose-windows)
+         ("C-c I" . crux-find-user-init-file)))
+
 (use-package delsel
   :config (pending-delete-mode t))
 
