@@ -29,6 +29,7 @@ Leave point after open-quote."
 (global-set-key "\M-\"" 'insert-quotes)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 (global-set-key (kbd "C-x w") 'delete-frame)
+(global-set-key (kbd "C-c b c") 'quick-calc)
 
 ;; backspace starts the isearch over
 (define-key isearch-mode-map [remap isearch-delete-char] 'isearch-del-char)
