@@ -309,3 +309,5 @@ and it's name isn't in no-cleanup-filenames."
    this allows the `Man-quit' function to close the frame."
   (if delete-frame-on-man-quit
       (delete-frame)))
+
+(bind-key "M-o" 'other-window)
