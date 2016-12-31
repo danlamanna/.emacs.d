@@ -205,6 +205,10 @@
 (use-package projectile
   :ensure t
   :config (progn
+            (custom-set-variables
+             '(projectile-require-project-root nil)
+             '(projectile-completion-system 'helm))
+
             (setq projectile-known-projects-file
                   (concat emacs-tmp-dir "/projectile-bookmarks.eld"))
             (projectile-global-mode)))
