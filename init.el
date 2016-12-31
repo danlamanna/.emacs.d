@@ -85,7 +85,11 @@
   :ensure t
   :config (progn
             (use-package elfeed
-              :ensure t)
+              :ensure t
+              :config (progn
+                        (custom-set-variables
+                         ;; oldest articles should be at the top
+                         '(elfeed-sort-order 'ascending))))
 
             (use-package elfeed-goodies
               :ensure t
