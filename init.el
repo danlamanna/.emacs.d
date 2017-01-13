@@ -178,7 +178,12 @@
               (kill-buffer)
               (jump-to-register :magit-fullscreen))
 
-            (bind-key "q" 'magit-quit-session magit-status-mode-map)))
+            (bind-key "q" 'magit-quit-session magit-status-mode-map)
+
+            ;; Add flag for --first-parent in magit log popup
+            (magit-define-popup-switch
+              'magit-log-popup
+              ?1 "First parent" "--first-parent")))
 
 (use-package multiple-cursors
   :ensure t
