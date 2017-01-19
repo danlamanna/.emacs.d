@@ -27,7 +27,41 @@
   :ensure t)
 
 (use-package helm-dash
-  :ensure t)
+  :ensure t
+  :config (progn
+            (setq helm-dash-browser-func 'eww
+                  helm-dash-common-docsets '("Ansible"
+                                             "BackboneJS"
+                                             "CMake"
+                                             "D3JS"
+                                             "Docker"
+                                             "ElasticSearch"
+                                             "Flask"
+                                             "Grunt"
+                                             "Jade"
+                                             "Jasmine"
+                                             "JavaScript"
+                                             "Jinja"
+                                             "MomentJS"
+                                             "Pandas"
+                                             "PostgreSQL"
+                                             "Python_2"
+                                             "Python_3"
+                                             "Redis"
+                                             "SQLAlchemy"
+                                             "Stylus"
+                                             "Twisted"
+                                             "UnderscoreJS"
+                                             "Vagrant"
+                                             "jQuery"))
+
+            (helm-dash-install-docset "Python 2")
+
+            ;; find all common docsets that aren't installed, install them
+            (-map 'helm-dash-install-docset
+                  (-difference helm-dash-common-docsets (helm-dash-installed-docsets)))
+            ))
+
 
 (use-package helm-descbinds
   :ensure t
