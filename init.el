@@ -51,6 +51,9 @@
 (use-package dl-backups
   :load-path "lisp/")
 
+(use-package dl-circe
+  :load-path "lisp/")
+
 (use-package dl-dired
   :load-path "lisp/")
 
