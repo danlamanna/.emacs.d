@@ -2,7 +2,19 @@
   :config (progn
             (require 'dl-credentials)
             (setq circe-reduce-lurker-spam t)
-            (enable-circe-color-nicks)))
+            (enable-circe-color-nicks)
+
+            (defun dl-circe-insert-message (chat-buffer message)
+              (with-current-buffer chat-buffer
+                (goto-char (point-max))
+                (previous-line)
+                (end-of-line)
+                (let ((inhibit-read-only t))
+                  (insert (format "\n%s" message)))))
+
+            ;;(dl-circe-insert-message foo "* dan has entered 'foo'")
+
+            ))
 
 (use-package circe-notifications
   :commands enable-circe-notifications
