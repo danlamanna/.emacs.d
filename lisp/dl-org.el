@@ -12,12 +12,21 @@
             (setq dl-org-property-icon-map '(("GHISSUE" . "!")
                                              ("GHPR" . "↰")))
 
+            (defun dl-org-icons()
+              (s-pad-right 4 " "
+                           (s-concat
+                            (dl-org-maybe-link-icon)
+                            (dl-org-property-icons '("GHISSUE" "GHPR")))))
+
+            (defun dl-org-maybe-link-icon()
+              (if (car (org-offer-links-in-entry (current-buffer) (point) 0))
+                  "🖇" ""))
+
             (defun dl-org-property-icons(props)
-              (s-pad-right 3 " "
-                           (s-join "" (-map (lambda(prop)
-                                              (if (org-entry-properties (point) prop)
-                                                  (cdr (assoc prop dl-org-property-icon-map))
-                                                " ")) props))))
+              (s-join "" (-map (lambda(prop)
+                                 (if (org-entry-properties (point) prop)
+                                     (cdr (assoc prop dl-org-property-icon-map))
+                                   " ")) props)))
             ;; org-babel
             (org-babel-do-load-languages
              'org-babel-load-languages
@@ -67,7 +76,7 @@
              '(org-agenda-ndays 5)
              '(org-agenda-prefix-format '((agenda . "f %i %-12:c%?-12t% s")
                                           (timeline . "  % s")
-                                          (todo . " %i %(dl-org-property-icons '(\"GHISSUE\" \"GHPR\"))")
+                                          (todo . " %i %(dl-org-icons)")
                                           (tags . " %i %-12:c")
                                           (search . " %i %-12:c")))
              '(org-show-siblings '((default . nil)
