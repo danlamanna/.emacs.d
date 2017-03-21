@@ -29,6 +29,11 @@
             (define-key dired-mode-map
               (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)))
 
+(use-package dired-quick-sort
+  :ensure t
+  :config
+  (dired-quick-sort-setup))
+
 (use-package peep-dired
   :ensure t
   :defer t
