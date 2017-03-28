@@ -145,7 +145,8 @@
   :ensure t)
 
 (use-package json-mode
-  :ensure t)
+  :ensure t
+  :mode (("\\.eslintrc$" . json-mode)))
 
 (use-package jump-char
   :ensure t
