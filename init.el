@@ -14,6 +14,8 @@
 (setq emacs-autosave-dir (concat emacs-tmp-dir "/autosaves/"))
 (setq recentf-save-file (concat emacs-tmp-dir "/" "recentf"))
 
+(set-face-attribute 'default t :font "-simp-Hack-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
+
 (use-package f
   :ensure t)
 

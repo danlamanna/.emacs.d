@@ -7,11 +7,6 @@
         (if (fboundp f)
             (funcall f -1))) '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 
-(custom-set-faces
- '(default ((t (:family "Source Code Pro"
-                        :height 110)))))
-
-
                         ;; misc
 (defun insert-quotations (&optional arg)
   "Enclose following ARG sexps in quotation marks.
