@@ -172,7 +172,8 @@
   :bind ("C-x s" . magit-status)
   :init (add-hook 'git-commit-mode-hook 'flyspell-mode)
   :config (progn
-            (setq magit-diff-refine-hunk 'all)
+            (setq magit-diff-refine-hunk 'all
+                  magit-delete-by-moving-to-trash nil)
 
             (defadvice magit-status (around magit-fullscreen activate)
               "Always fullscreen magit."
