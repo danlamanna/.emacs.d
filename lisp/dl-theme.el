@@ -1,10 +1,5 @@
-(use-package gruber-darker-theme
+(use-package monokai-theme
   :ensure t
-  :init (load-theme 'gruber-darker t)
-  :config (progn
-            (eval-after-load "magit"
-              (custom-set-faces
-               '(diff-refine-added ((t (:inherit diff-refine-change :background "#2d872d"))))
-               '(diff-refine-removed ((t (:inherit diff-refine-change :background "#872c2c"))))))))
+  :init (load-theme 'monokai t))
 
 (provide 'dl-theme)
