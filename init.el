@@ -41,11 +41,16 @@
 
 (use-package crux
   :ensure t
+  :init (defun dl-find-user-init-file ()
+          "Custom version of `crux-find-user-init-file' which
+           opens the init file in the *same* window."
+          (interactive)
+          (find-file user-init-file))
   :bind (("C-a" . crux-move-beginning-of-line)
          ("C-c o" . crux-open-with)
          ("C-c u" . crux-view-url)
          ("C-x 4 t" . crux-transpose-windows)
-         ("C-c I" . crux-find-user-init-file)))
+         ("C-c I" . dl-find-user-init-file)))
 
 (use-package delsel
   :config (pending-delete-mode t))
