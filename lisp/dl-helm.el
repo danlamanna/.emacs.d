@@ -19,7 +19,7 @@
            '(helm-split-window-in-side-p t)
            '(helm-ff-file-name-history-use-recentf t))
 
-            (helm-mode))
+          (helm-mode))
   :config (progn
             (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)))
 

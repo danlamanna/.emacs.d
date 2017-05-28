@@ -247,17 +247,12 @@
   :bind ("C-c r" . replace-string))
 
 (use-package simple
-  :bind (("M-g" . goto-line)
+  :bind (("M-g l" . goto-line)
          ("C-z" . quoted-insert)
          ("C-c n" . buffer-cleanup))
   :config (progn
             (custom-set-variables
              '(save-interprogram-paste-before-kill t))
-
-            (defadvice zap-to-char (after zap-until-char (arg char) activate)
-              "Makes zap-to-char act like zap-until-char."
-              (insert char)
-              (backward-char 1))
 
             ;; cleanup buffer on save
             ;; both these lists should be lowercased

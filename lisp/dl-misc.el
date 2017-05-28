@@ -7,7 +7,7 @@
         (if (fboundp f)
             (funcall f -1))) '(menu-bar-mode tool-bar-mode scroll-bar-mode))
 
-                        ;; misc
+;; misc
 (defun insert-quotations (&optional arg)
   "Enclose following ARG sexps in quotation marks.
 Leave point after open-paren."
