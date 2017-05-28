@@ -224,18 +224,7 @@
 (use-package projectile
   :ensure t
   :config (progn
-            (defun dl-projectile-root-site-package (dir)
-              "Returns the directory of a python package installed within a site-packages
-               directory, or `nil' if one doesn't exist."
-              (when-let ((lib-dir (projectile-locate-dominating-file (f-parent dir) "site-packages"))
-                         (site-packages (f-join lib-dir "site-packages"))
-                         (package-rel-dir (s-replace site-packages "" dir)))
-                (if (not (s-equals-p package-rel-dir "/"))
-                    (f-join site-packages (nth 1 (f-split package-rel-dir))))))
-
             (custom-set-variables
-             '(projectile-project-root-files-functions (-concat projectile-project-root-files-functions
-                                                                '(dl-projectile-root-site-package)))
              '(projectile-require-project-root nil)
              '(projectile-completion-system 'helm))
 
