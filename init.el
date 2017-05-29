@@ -298,6 +298,9 @@ and it's name isn't in no-cleanup-filenames."
   :config (progn
             (require 'vlf-setup)))
 
+(use-package which-key
+  :ensure t)
+
 (use-package whitespace
   :bind ("C-c w" . whitespace-mode))
 
