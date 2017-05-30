@@ -167,9 +167,6 @@
   :init (key-chord-mode 1)
   :config (progn
             (key-chord-define-global "hh" 'helm-dash)
-            (key-chord-define-global "ww" 'ace-jump-word-mode)
-            (key-chord-define-global "jj" 'ace-jump-char-mode)
-            (key-chord-define-global "kk" 'ace-jump-line-mode)
             (key-chord-define-global "uu" 'undo-tree-visualize)))
 
 (use-package magit
