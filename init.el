@@ -321,7 +321,8 @@ and it's name isn't in no-cleanup-filenames."
             (require 'vlf-setup)))
 
 (use-package which-key
-  :ensure t)
+  :ensure t
+  :config (which-key-mode))
 
 (use-package whitespace
   :bind ("C-c w" . whitespace-mode))
