@@ -91,6 +91,14 @@
 (use-package dl-theme
   :load-path "lisp/")
 
+(use-package dumb-jump
+  :ensure t
+  :bind (("M-g ." . dumb-jump-go)
+         ("M-g ," . dumb-jump-back))
+  :config (progn
+            (setq dumb-jump-selector 'helm
+                  dumb-jump-aggressive nil)))
+
 (use-package elfeed-org
   :ensure t
   :config (progn
