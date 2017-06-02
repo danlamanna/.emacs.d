@@ -52,9 +52,6 @@
          ("C-x 4 t" . crux-transpose-windows)
          ("C-c I" . dl-find-user-init-file)))
 
-(use-package delsel
-  :config (pending-delete-mode t))
-
 (use-package dl-backups
   :load-path "lisp/")
 
@@ -239,6 +236,20 @@
 
 (use-package replace
   :bind ("C-c r" . replace-string))
+
+(use-package selected
+  :ensure t
+  :init (progn
+          (setq selected-python-mode-map (make-sparse-keymap))
+          (selected-global-mode))
+  :bind (:map selected-keymap
+              ("q" . selected-off)
+              ("u" . upcase-region)
+              ("d" . downcase-region)
+              ("<backspace>" . delete-region)
+              :map selected-python-mode-map
+              ("<backtab>" . python-indent-shift-left)
+              ("<tab>" . python-indent-shift-right)))
 
 (use-package simple
   :bind (("M-g l" . goto-line)
