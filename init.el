@@ -64,6 +64,9 @@
 (use-package dl-docker
   :load-path "lisp/")
 
+(use-package dl-girder
+  :load-path "lisp/")
+
 (use-package dl-helm
   :load-path "lisp/")
 
