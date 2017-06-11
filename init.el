@@ -234,30 +234,6 @@
              '(projectile-completion-system 'helm)
              '(projectile-track-known-projects-automatically nil))
 
-            (setq dl-projectile-known-projects-file
-                  (expand-file-name "~/.emacs.d/known-projects.txt"))
-
-            (defun dl-projectile-update-known-projects(&optional inotify-event)
-              (with-temp-buffer
-                (insert-file-contents dl-projectile-known-projects-file)
-                (let ((s (buffer-substring-no-properties (point-min) (point-max))))
-                  (projectile-clear-known-projects)
-                  (-map (lambda (project-path)
-                          ;; paths have to end in slash for projectile to work
-                          (let ((full-project-path (if (not (s-ends-with? "/" project-path))
-                                                       (s-concat project-path "/")
-                                                     project-path)))
-                            (projectile-add-known-project full-project-path)))
-                        (s-split "\n" s t)))))
-
-            ;; Initialize known-projects
-            (dl-projectile-update-known-projects)
-
-            ;; Watch for any changes to known-projects
-            (inotify-add-watch dl-projectile-known-projects-file
-                               'close-write
-                               'dl-projectile-update-known-projects)
-
             (projectile-mode)))
 
 (use-package replace
