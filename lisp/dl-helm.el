@@ -35,6 +35,12 @@
 
 (use-package helm-projectile
   :ensure t
-  :config (helm-projectile-on))
+  :config (progn
+            (helm-projectile-on)
+
+            ;; Use ag instead of grep, see:
+            ;; https://emacs.stackexchange.com/questions/21197/how-can-i-map-helm-projectile-grep-to-helm-projectile-ag
+            (define-advice helm-projectile-grep (:override (&optional dir) ag)
+              (helm-do-ag (or dir (projectile-project-root))))))
 
 (provide 'dl-helm)
