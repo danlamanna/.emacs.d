@@ -1,6 +1,20 @@
 ;; vagrant tramp
 (use-package vagrant-tramp
-  :ensure t)
+  :ensure t
+  :config (progn
+            ;; Exact override of the original except it changes the -drop 8 to -drop 7.
+            ;; See: https://github.com/dougm/vagrant-tramp/issues/33
+            (defun vagrant-tramp--all-boxes ()
+              (let* ((status-cmd "vagrant global-status --machine-readable")
+                     (status-raw (shell-command-to-string status-cmd))
+                     (status-lines (-drop 7 (split-string status-raw "\n")))
+                     (status-data-raw (--map (mapconcat 'identity
+                                                        (-drop 4 (split-string it ",")) ",")
+                                             status-lines))
+                     (status-data (--map (replace-regexp-in-string " " "" it) status-data-raw))
+                     (status-groups (-butlast (-split-on "" status-data)))
+                     (vm-attrs '(id name provider state dir)))
+                (--map (-zip vm-attrs it) status-groups)))))
 
 
 ;; docker tramp
