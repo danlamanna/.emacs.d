@@ -19,6 +19,9 @@
   :ensure t
   :commands pycoverage-mode)
 
+(use-package realgud
+  :ensure t)
+
 (use-package sphinx-doc
   :ensure t
   :init (add-hook 'python-mode-hook 'sphinx-doc-mode))
