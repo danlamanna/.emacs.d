@@ -15,6 +15,10 @@
              '(jedi:tooltip-method nil)
              '(jedi:use-shortcuts t))))
 
+(use-package pycoverage
+  :ensure t
+  :commands pycoverage-mode)
+
 (use-package sphinx-doc
   :ensure t
   :init (add-hook 'python-mode-hook 'sphinx-doc-mode))
