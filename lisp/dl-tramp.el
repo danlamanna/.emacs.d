@@ -24,6 +24,10 @@
             (custom-set-variables
              '(docker-tramp-use-names t))))
 
+(use-package helm-tramp
+  :after (docker-tramp vagrant-tramp)
+  :bind ("C-c s" . helm-tramp))
+
 (provide 'dl-tramp)
 
 ;; Taken from
