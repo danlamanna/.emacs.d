@@ -1,19 +1,25 @@
-(defun find-girder-dir()
-  (locate-dominating-file default-directory
+(defun girder-dir?(&optional directory)
+  "Determine if the DIRECTORY is within a Girder directory."
+  (locate-dominating-file (or directory default-directory)
                           (lambda (dir)
                             (and (f-exists? (f-join dir "girder"))
                                  (f-exists? (f-join dir "setup.py"))))))
 
-(dir-locals-set-class-variables 'girder-dir-locals
-      '((nil . ((eval . (set (make-local-variable 'project-path) (find-girder-dir)))))
-        (js2-mode . ((eval . (nvm-use-for))
-                     (eval . (set (make-local-variable 'flycheck-javascript-eslint-executable)
-                                  (f-join project-path "node_modules/.bin/eslint")))
-                     (eval . (set (make-local-variable 'flycheck-eslintrc)
-                                  (f-join project-path ".eslintrc")))
-                     (js-indent-level . 4)))
-        (python-mode . ((eval . (set (make-local-variable 'flycheck-flake8rc)
-                                     (f-join project-path "tests/flake8.cfg")))))))
+(defun girder-setup-python-buffer()
+  (when-let (girder-dir (girder-dir?))
+    (set (make-local-variable 'flycheck-flake8rc) (f-join girder-dir "tests/flake8.cfg"))))
+
+(add-hook 'python-mode-hook 'girder-setup-python-buffer)
+
+(defun girder-setup-js-buffer()
+  (when-let (girder-dir (girder-dir?))
+    (nvm-use-for)
+    (set (make-local-variable 'flycheck-javascript-eslint-executable)
+         (f-join girder-dir "node_modules/.bin/eslint"))
+    (set (make-local-variable 'flycheck-eslintrc)
+         (f-join girder-dir ".eslintrc"))))
+
+(add-hook 'js2-mode-hook 'girder-setup-js-buffer)
 
 (defun girder-combine-coverage(&rest args)
   "Combine coverage in a Girder project.
