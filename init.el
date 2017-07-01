@@ -133,6 +133,10 @@
  '(ediff-split-window-function 'split-window-horizontally)
  '(ediff-highlight-all-diffs 'nil))
 
+(use-package editorconfig
+  :ensure t
+  :config (editorconfig-mode 1))
+
 (use-package expand-region
   :ensure t
   :bind ("C-q" . er/expand-region))
