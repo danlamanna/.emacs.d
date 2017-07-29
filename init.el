@@ -311,6 +311,9 @@ and it's name isn't in no-cleanup-filenames."
 
             (add-hook 'before-save-hook 'buffer-cleanup-safe)))
 
+(use-package terraform-mode
+  :ensure t)
+
 (use-package undo-tree
   :ensure t
   :config (progn
