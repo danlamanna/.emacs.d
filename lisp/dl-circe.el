@@ -1,10 +1,12 @@
 (use-package circe
+  :ensure t
   :config (progn
             (require 'dl-credentials)
             (setq circe-reduce-lurker-spam t)
             (enable-circe-color-nicks)))
 
 (use-package circe-notifications
+  :ensure t
   :commands enable-circe-notifications
   :after circe
   :init (add-hook 'circe-server-connected-hook #'enable-circe-notifications)
