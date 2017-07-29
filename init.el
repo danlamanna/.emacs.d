@@ -156,7 +156,18 @@
 
 (use-package github-browse-file
   :ensure t
+  :after magit
   :config (progn
+            (defun dl-github-browse-file-rev-parse (orig-fun &rest args)
+              "`github-browse-file--guess-commit' sometimes returns commit-ish strings
+               which don't work with Github. Run them through rev-parse when it makes sense."
+              (let ((guessed-commit (apply orig-fun args)))
+                (if (derived-mode-p 'magit-mode)
+                    (magit-rev-parse guessed-commit)
+                  guessed-commit)))
+
+            (advice-add 'github-browse-file--guess-commit :around 'dl-github-browse-file-rev-parse)
+
             (custom-set-variables
              '(github-browse-file-show-line-at-point t))))
 
