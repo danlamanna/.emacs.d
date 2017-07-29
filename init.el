@@ -168,6 +168,13 @@
 
             (advice-add 'github-browse-file--guess-commit :around 'dl-github-browse-file-rev-parse)
 
+            (defun dl-github-browse-file-dwim ()
+              (interactive)
+              (if (buffer-file-name)
+                  (github-browse-file)
+                (github-browse-commit)))
+            (bind-key "C-c v" 'dl-github-browse-file-dwim)
+
             (custom-set-variables
              '(github-browse-file-show-line-at-point t))))
 
