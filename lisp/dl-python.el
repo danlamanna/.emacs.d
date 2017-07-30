@@ -1,33 +1,27 @@
-(use-package jedi
+(use-package anaconda-mode
   :ensure t
-  :commands python-mode
   :init (progn
-          (defun python-jedi-hook()
-            "Sets up jedi to use, disables company-mode since jedi
-             prefers auto-complete and it's easier not to argue with it."
-            (jedi:setup)
-            (company-mode -1))
+          (add-hook 'python-mode-hook 'anaconda-mode)
+          (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+  :bind (:map anaconda-mode-map
+              ("M-." . anaconda-mode-find-definitions)
+              ("M-," . anaconda-mode-go-back)
+              ("M-*" . anaconda-mode-find-assignments)))
 
-          (add-hook 'python-mode-hook 'python-jedi-hook))
-  :config (progn
-            (custom-set-variables
-             '(jedi:complete-on-dot t)
-             '(jedi:tooltip-method nil)
-             '(jedi:use-shortcuts t))))
-
-(use-package pycoverage
+(use-package company-anaconda
   :ensure t
-  :commands pycoverage-mode)
+  :config (add-to-list 'company-backends 'company-anaconda))
 
-(use-package realgud
-  :ensure t)
+(use-package pip-requirements
+  :ensure t
+  :after company)
 
 (use-package sphinx-doc
   :ensure t
   :init (add-hook 'python-mode-hook 'sphinx-doc-mode))
 
-(use-package virtualenvwrapper
-  :ensure t)
-
+(use-package pycoverage
+  :ensure t
+  :commands pycoverage-mode)
 
 (provide 'dl-python)
