@@ -245,6 +245,9 @@
             (custom-set-variables
              '(show-paren-style 'mixed))))
 
+(use-package pkgbuild-mode
+  :ensure t)
+
 ;; Show column number, use camelcase with word navigation
 (use-package prog-mode
   :init (progn
