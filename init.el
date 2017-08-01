@@ -76,6 +76,9 @@
 (use-package dl-lisp
   :load-path "lisp/")
 
+(use-package dl-mail
+  :load-path "lisp/")
+
 (use-package dl-misc
   :load-path "lisp/")
 
