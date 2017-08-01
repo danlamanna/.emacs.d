@@ -35,6 +35,9 @@
 (use-package cmake-mode
   :ensure t)
 
+(use-package conf-mode
+  :mode (("inventory" . conf-mode)))
+
 (use-package company
   :ensure t
   :config (global-company-mode))
