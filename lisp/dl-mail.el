@@ -5,6 +5,8 @@
 (use-package notmuch
   :ensure t
   :bind (:map notmuch-search-mode-map
+              ("g" . notmuch-refresh-this-buffer)
+              :map notmuch-tree-mode-map
               ("g" . notmuch-refresh-this-buffer))
   :config (progn
             ;; notmuch tag:unread
