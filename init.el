@@ -320,6 +320,11 @@ and it's name isn't in no-cleanup-filenames."
 
             (add-hook 'before-save-hook 'buffer-cleanup-safe)))
 
+(use-package smooth-scrolling
+  :config (progn
+            (setq smooth-scroll-margin 20)
+            (smooth-scrolling-mode 1)))
+
 (use-package terraform-mode
   :ensure t)
 
