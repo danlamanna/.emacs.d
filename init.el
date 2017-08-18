@@ -227,6 +227,11 @@
 
             (bind-key "q" 'magit-quit-session magit-status-mode-map)
 
+            ;; Add flag for ignoring case
+            (magit-define-popup-switch
+              'magit-log-popup
+              ?i "Ignore case" "--regexp-ignore-case")
+
             ;; Add flag for --first-parent in magit log popup
             (magit-define-popup-switch
               'magit-log-popup
