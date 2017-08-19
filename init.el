@@ -19,6 +19,9 @@
 (use-package f
   :ensure t)
 
+(use-package dl-swiper
+  :load-path "lisp/")
+
 ;; Set/load custom file
 (setq custom-file "~/.emacs.d/emacs-custom.el")
 (if (f-exists? custom-file)
@@ -74,8 +77,8 @@
 (use-package dl-girder
   :load-path "lisp/")
 
-(use-package dl-helm
-  :load-path "lisp/")
+;; (use-package dl-helm
+;;   :load-path "lisp/")
 
 (use-package dl-javascript
   :load-path "lisp/")
@@ -106,7 +109,7 @@
   :bind (("M-g ." . dumb-jump-go)
          ("M-g ," . dumb-jump-back))
   :config (progn
-            (setq dumb-jump-selector 'helm
+            (setq dumb-jump-selector 'ivy
                   dumb-jump-aggressive nil)))
 
 (use-package elfeed-org
@@ -270,10 +273,9 @@
 (use-package projectile
   :ensure t
   :config (progn
-            (custom-set-variables
-             '(projectile-require-project-root nil)
-             '(projectile-completion-system 'helm)
-             '(projectile-track-known-projects-automatically nil))
+            (setq projectile-completion-system 'ivy
+                  projectile-require-project-root nil
+                  projectile-track-known-projects-automatically nil)
 
             (projectile-mode)))
 
