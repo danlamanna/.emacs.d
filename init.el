@@ -16,6 +16,56 @@
 
 (set-face-attribute 'default t :font "-simp-Hack-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
 
+(use-package counsel
+  :ensure t
+  :bind (("M-x" . counsel-M-x)
+         ("C-x l" . counsel-locate)
+         ("C-x C-f" . counsel-find-file)
+         ("C-h f" . counsel-describe-function)
+         ("C-h v" . counsel-describe-variable)))
+
+(use-package counsel-dash
+  :ensure t)
+
+(use-package projectile
+  :ensure t
+  :config (progn
+            (setq projectile-completion-system 'ivy
+                  projectile-require-project-root nil
+                  projectile-track-known-projects-automatically nil)
+
+            (projectile-mode)))
+
+(use-package counsel-projectile
+  :ensure t
+  :after (counsel projectile)
+  :config (counsel-projectile-on))
+
+(use-package swiper
+  :ensure t
+  :bind ("C-s" . swiper))
+
+(use-package ivy
+  :ensure t
+  :bind ("C-c C-r" . ivy-resume)
+  :config (progn
+            (ivy-mode 1)
+
+            (setq ivy-initial-inputs-alist nil
+                  ivy-re-builders-alist '((t . ivy--regex-ignore-order))
+                  ivy-use-virtual-buffers t
+                  ivy-height 25
+                  ivy-extra-directories nil
+                  ivy-fixed-height-minibuffer t)))
+
+(use-package counsel-projectile
+  :after (projectile)
+  :demand t
+  :ensure t
+  :config (progn
+            (counsel-projectile-on)))
+
+
 (use-package f
   :ensure t)
 
@@ -74,8 +124,8 @@
 (use-package dl-girder
   :load-path "lisp/")
 
-(use-package dl-helm
-  :load-path "lisp/")
+;; (use-package dl-helm
+;;   :load-path "lisp/")
 
 (use-package dl-javascript
   :load-path "lisp/")
@@ -106,7 +156,7 @@
   :bind (("M-g ." . dumb-jump-go)
          ("M-g ," . dumb-jump-back))
   :config (progn
-            (setq dumb-jump-selector 'helm
+            (setq dumb-jump-selector 'ivy
                   dumb-jump-aggressive nil)))
 
 (use-package elfeed-org
@@ -266,16 +316,6 @@
   :init (progn
           (add-hook 'prog-mode-hook 'column-number-mode)
           (add-hook 'prog-mode-hook 'subword-mode)))
-
-(use-package projectile
-  :ensure t
-  :config (progn
-            (custom-set-variables
-             '(projectile-require-project-root nil)
-             '(projectile-completion-system 'helm)
-             '(projectile-track-known-projects-automatically nil))
-
-            (projectile-mode)))
 
 (use-package replace
   :bind ("C-c r" . replace-string))
