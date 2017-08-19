@@ -1,0 +1,41 @@
+* TODO Look into ansible-mode documentation
+  https://github.com/k1LoW/emacs-ansible/issues/14
+* TODO Use dired as a file manager                                    :dired:
+* TODO Github like empty directory traversal in dired                 :dired:
+  https://fuco1.github.io/2017-07-15-Collapse-unique-nested-paths-in-dired-with-dired-collapse-mode.html
+* TODO Look into scheduled organization of TODOs                        :org:
+* TODO Magit ediff all files in selection                             :magit:
+* TODO Stop opening things in opposite buffers
+  Use display-buffer-alist for this, see example:
+  https://github.com/syl20bnr/spacemacs/pull/1421/files
+* TODO Copy from magit diff without +/-                               :magit:
+* TODO Integrate google calendar into znc/irc                 :calendar:chat:
+  http://pragmaticemacs.com/emacs/how-i-view-my-google-calendar-agenda-in-emacs/
+  https://github.com/insanum/gcalcli
+  https://www.reddit.com/r/emacs/comments/5qd8co/best_method_for_orgmode_google_calendar/
+* TODO Org mode sorting from Chris's gist                               :org:
+  https://gist.github.com/kotfic/78ff3a0b93f6b10b5d68e641d3e75e99
+* TODO Look into using Indium                                    :javascript:
+  https://github.com/NicolasPetton/Indium
+* TODO Emacs dbus integration with rpdb                    :debugging:python:
+* TODO Figure out why puglintrc is not working                          :pug:
+* TODO Look into anaconda-mode                                       :python:
+* TODO Look into prelude for packages
+* TODO Look into dired narrow                                         :dired:
+  http://pragmaticemacs.com/emacs/dynamically-filter-directory-listing-with-dired-narrow/
+* TODO Setup bug reference mode
+  http://www.lunaryorn.com/posts/bug-reference-mode.html
+* TODO Look through wasamasa emacs config
+  https://github.com/wasamasa/dotemacs/blob/master/init.org
+* TODO Look into storing bookmarks in emacs
+* TODO Investigate magit-gh-pulls                                     :magit:
+* TODO Incorporate geonotebook.el                               :geonotebook:
+  https://gist.github.com/kotfic/05f4ebd611ddc02254b16de0565e4bcc
+* mail integration :mail:
+** TODO Expand html view by default for notifications from github
+** TODO Setup org-capture to correctly link from notmuch emails :org:
+** TODO Prune recipients
+   Look at `message-dont-reply-to-names` and `message-prune-recipient-rules` to remove
+   *@noreply.github.com.
+** TODO Limit max emails/threads to a certain threshold
+** TODO Setup highlighting for name/usernames
