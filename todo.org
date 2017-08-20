@@ -31,6 +31,13 @@
 * TODO Investigate magit-gh-pulls                                     :magit:
 * TODO Incorporate geonotebook.el                               :geonotebook:
   https://gist.github.com/kotfic/05f4ebd611ddc02254b16de0565e4bcc
+* TODO Better return for org mode                                       :org:
+  http://irreal.org/blog/?p=6131
+* ivy/counsel :ivy:counsel:
+** TODO Remember recent commands with M-x
+** TODO Limit counsel-ag to certain file extensions
+** TODO Switch buffer should show project name
+** TODO Setup push/pop views
 * mail integration :mail:
 ** TODO Expand html view by default for notifications from github
 ** TODO Setup org-capture to correctly link from notmuch emails :org:
@@ -39,3 +46,4 @@
    *@noreply.github.com.
 ** TODO Limit max emails/threads to a certain threshold
 ** TODO Setup highlighting for name/usernames
+** TODO Put point in correct place on notmuch reply
