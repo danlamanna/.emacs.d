@@ -24,6 +24,9 @@
          ("C-h f" . counsel-describe-function)
          ("C-h v" . counsel-describe-variable)))
 
+(use-package smex
+  :ensure t)
+
 (use-package counsel-dash
   :ensure t)
 
@@ -58,13 +61,17 @@
                   ivy-extra-directories nil
                   ivy-fixed-height-minibuffer t)))
 
+(use-package ivy-rich
+  :ensure t
+  :after (ivy)
+  :config (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
+
 (use-package counsel-projectile
   :after (projectile)
   :demand t
   :ensure t
   :config (progn
             (counsel-projectile-on)))
-
 
 (use-package f
   :ensure t)
