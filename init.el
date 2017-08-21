@@ -24,6 +24,10 @@
 (if (f-exists? custom-file)
     (load custom-file))
 
+;; package is unmaintained
+(use-package ansible-doc
+  :ensure t
+  :init (add-hook 'yaml-mode-hook 'ansible-doc-mode))
 
 (use-package browse-url
   :config (progn
@@ -326,6 +330,7 @@ and it's name isn't in no-cleanup-filenames."
             (add-hook 'before-save-hook 'buffer-cleanup-safe)))
 
 (use-package smooth-scrolling
+  :ensure t
   :config (progn
             (setq smooth-scroll-margin 20)
             (smooth-scrolling-mode 1)))
