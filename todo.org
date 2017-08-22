@@ -47,3 +47,4 @@
 ** TODO Limit max emails/threads to a certain threshold
 ** TODO Setup highlighting for name/usernames
 ** TODO Put point in correct place on notmuch reply
+** TODO org-agenda should show mail when a notmuch link is in a task :org:
