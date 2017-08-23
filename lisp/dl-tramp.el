@@ -25,6 +25,7 @@
              '(docker-tramp-use-names t))))
 
 (use-package helm-tramp
+  :ensure t
   :after (docker-tramp vagrant-tramp)
   :bind ("C-c s" . helm-tramp))
 
