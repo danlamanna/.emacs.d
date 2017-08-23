@@ -189,7 +189,8 @@
              '(github-browse-file-show-line-at-point t))))
 
 (use-package jinja2-mode
-  :ensure t)
+  :ensure t
+  :mode (("\\.j2$" . jinja2-mode)))
 
 (use-package json-mode
   :ensure t
