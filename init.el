@@ -287,6 +287,7 @@
           (selected-global-mode))
   :bind (:map selected-keymap
               ("q" . selected-off)
+              ("s" . sort-lines)
               ("u" . upcase-region)
               ("d" . downcase-region)
               ("<backspace>" . delete-region)
