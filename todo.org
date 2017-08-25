@@ -33,9 +33,26 @@
   https://gist.github.com/kotfic/05f4ebd611ddc02254b16de0565e4bcc
 * TODO Better return for org mode                                       :org:
   http://irreal.org/blog/?p=6131
+* TODO Look into beginend
+  https://github.com/DamienCassou/beginend
+
+  Ideally I could use this for dired, notmuch-show, message-mode.
+* flyspell-prog-mode
+  Is this worth it, how would syncing dictionaries of valid non-english "words" work?
+* magithub                                                            :magit:
+  https://github.com/vermiculus/magithub
+* no-littering
+  https://manuel-uberti.github.io/programming/2017/06/17/nolittering/
+  https://github.com/emacscollective/no-littering
+* shrink-whitespace
+  https://github.com/jcpetkovich/shrink-whitespace.el
+  Unify this and just-one-space.
+* locate over tramp
+* helpful
+  https://github.com/Wilfred/helpful
 * ivy/counsel :ivy:counsel:
 ** TODO Remember recent commands with M-x
-** TODO Limit counsel-ag to certain file extensions
+** TODO Limit counsel-{a,r}g to certain file extensions
 ** TODO Switch buffer should show project name
 ** TODO Setup push/pop views
 * mail integration :mail:
