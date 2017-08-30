@@ -40,6 +40,9 @@
   https://github.com/DamienCassou/beginend
 
   Ideally I could use this for dired, notmuch-show, message-mode.
+* Look into smart-shift
+  https://github.com/hbin/smart-shift
+  Particularly with regards to indenting/de-indenting yaml.
 * flyspell-prog-mode
   Is this worth it, how would syncing dictionaries of valid non-english "words" work?
 * magithub                                                            :magit:
