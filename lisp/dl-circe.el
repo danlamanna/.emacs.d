@@ -40,7 +40,7 @@
                   ;; without infinitely recursing
                   (let ((circe-notifications-notify-function nil))
                     (circe-notifications-notify nick body channel))
-                (if (= 0 (length (visible-frame-list)))
+                (if (= 0 (length (frame-list)))
                     (let ((circe-notifications-notify-function nil)) ;; see above comment
                       (circe-notifications-notify nick "new message" channel))
                   (x-urgency-hint (or (dl-circe-get-chat-frame-from-buffer
@@ -82,7 +82,7 @@
               (-first-item (-sort (lambda (frame-a frame-b)
                                     (> (length (-filter 'dl-circe-is-circe-window (window-list frame-a)))
                                        (length (-filter 'dl-circe-is-circe-window (window-list frame-b)))))
-                                  (visible-frame-list))))
+                                  (frame-list))))
 
             (setq circe-notifications-notify-function 'dl-circe-notify)
 
