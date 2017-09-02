@@ -56,11 +56,19 @@
 * locate over tramp
 * helpful
   https://github.com/Wilfred/helpful
+* TODO Look into dired-hacks                                          :dired:
+  https://github.com/Fuco1/dired-hacks
+* TODO Consider using projectile cache
+  One issue would be invalidating when magit changes branches.
 * ivy/counsel :ivy:counsel:
-** TODO Remember recent commands with M-x
+** DONE Remember recent commands with M-x
+   CLOSED: [2017-08-20 Sun 17:58]
+   - State "DONE"       from "TODO"       [2017-08-20 Sun 17:58]
+     Smex enables this.
 ** TODO Limit counsel-{a,r}g to certain file extensions
 ** TODO Switch buffer should show project name
 ** TODO Setup push/pop views
+** TODO Get counsel-locate working over tramp
 * mail integration :mail:
 ** TODO Expand html view by default for notifications from github
 ** TODO Setup org-capture to correctly link from notmuch emails :org:
@@ -71,6 +79,7 @@
 ** TODO Setup highlighting for name/usernames
 ** TODO Put point in correct place on notmuch reply
 ** TODO org-agenda should show mail when a notmuch link is in a task :org:
+** TODO Backlinking view in notmuch
 * New 26.1 features
   - wdired-create-parent-directories variable
   - browse-url-of-dired-file
