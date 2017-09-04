@@ -71,3 +71,7 @@
 ** TODO Setup highlighting for name/usernames
 ** TODO Put point in correct place on notmuch reply
 ** TODO org-agenda should show mail when a notmuch link is in a task :org:
+* New 26.1 features
+  - wdired-create-parent-directories variable
+  - browse-url-of-dired-file
+  - New tramp connection method "gdrive"
