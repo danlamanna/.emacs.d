@@ -81,16 +81,25 @@
              '(org-refile-targets '((org-agenda-files :maxlevel . 8)))
              '(org-todo-keywords '((sequence "TODO(t!)" "IN REVIEW(r!)" "ON HOLD(h@)" "BACKLOG(b!)" "|" "DONE(d!)" "INVALID(i@)")))
              '(org-use-fast-todo-selection t)
-             '(org-log-done 'time)
-             '(org-capture-templates
-               '(("w" "Work TODO" entry
-                  (file+headline "~/kworg/notes.org" "Unfiled")
-                  "* TODO %?
- %i")
-                 ("p" "Personal TODO" entry
-                  (file+headline "~/org/todo.org" "Unfiled")
-                  "* TODO %?
- %i"))))))
+             '(org-log-done 'time))
+
+            (setq org-capture-templates
+                  '(("k" "Kitware templates")
+                    ("kt" "KW TODO" entry
+                     (file+headline "~/kworg/notes.org" "Unfiled"))
+                    ("ks" "KW Respond" entry
+                     (file+olp "~/kworg/notes.org" "Unfiled" "Respond To"))
+                    ("kr" "KW Read it later" entry
+                     (file+olp "~/kworg/notes.org" "Misc" "Read it later"))
+                    ("kw" "KW Watch it later" entry
+                     (file+olp "~/kworg/notes.org" "Misc" "Watch it later"))
+                    ("p" "Personal templates")
+                    ("pt" "Personal TODO" entry
+                     (file+headline "~/org/todo.org" "Unfiled"))
+                    ("pr" "Read it later" entry
+                     (file+olp "~/org/notes.org" "Misc" "Read it later"))
+                    ("pw" "Watch it later" entry
+                     (file+olp "~/org/notes.org" "Misc" "Watch it later"))))))
 
 
 (provide 'dl-org)
