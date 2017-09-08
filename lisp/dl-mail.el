@@ -24,6 +24,7 @@
 
 (use-package notmuch
   :ensure t
+  :demand t
   :bind (:map notmuch-search-mode-map
               ("g" . notmuch-refresh-this-buffer)
               :map notmuch-tree-mode-map
