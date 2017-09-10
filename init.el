@@ -9,21 +9,23 @@
 
 (require 'use-package)
 
+(use-package f
+  :ensure t)
+
 ;; Setup tmp dirs
-(setq emacs-tmp-dir (expand-file-name "~/.emacs.d/tmp"))
-(setq emacs-autosave-dir (concat emacs-tmp-dir "/autosaves/"))
-(setq recentf-save-file (concat emacs-tmp-dir "/" "recentf"))
+(setq emacs-tmp-dir (f-join user-emacs-directory "tmp"))
+(setq emacs-autosave-dir (f-join user-emacs-directory "autosaves"))
 
 (set-face-attribute 'default t :font "-simp-Hack-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
 
-(use-package f
-  :ensure t)
+(when (f-exists? "~/bin")
+  (add-to-list 'exec-path "~/bin"))
 
 (use-package dl-swiper
   :load-path "lisp/")
 
 ;; Set/load custom file
-(setq custom-file "~/.emacs.d/emacs-custom.el")
+(setq custom-file (f-join user-emacs-directory "emacs-custom.el"))
 (if (f-exists? custom-file)
     (load custom-file))
 
