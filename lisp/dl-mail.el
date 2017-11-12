@@ -46,7 +46,11 @@
                            :key "g"
                            :sort-order 'newest-first
                            :search-type 'tree)))
-            (setq notmuch-search-oldest-first nil)))
+            (setq notmuch-search-oldest-first nil)
+
+            ;; Signal i3blocks when tags are changed within emacs
+            (defadvice notmuch-update-tags(after signal-i3blocks activate)
+              (start-process "update-i3blocks" nil "pkill" "-RTMIN+1" "i3blocks"))))
 
 (use-package org-notmuch
   :load-path "lisp/"
