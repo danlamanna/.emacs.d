@@ -80,7 +80,9 @@
 ** TODO Put point in correct place on notmuch reply
 ** TODO org-agenda should show mail when a notmuch link is in a task :org:
 ** TODO Backlinking view in notmuch
+** TODO notmuch "w" show attachments and dired-target-dwim :dired:
 * New 26.1 features
   - wdired-create-parent-directories variable
   - browse-url-of-dired-file
   - New tramp connection method "gdrive"
+* TODO Disable swiper while recording a macro
