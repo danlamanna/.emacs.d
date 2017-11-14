@@ -63,7 +63,7 @@
 
             (defun dl-circe-get-chat-frame-from-buffer (buffer)
               "Given a circe BUFFER corresponding to a chat, return the associated frame."
-              (if-let ((window (get-buffer-window buffer 'visible)))
+              (if-let* ((window (get-buffer-window buffer 'visible)))
                   (window-frame window)))
 
 
