@@ -218,7 +218,8 @@
 
 (use-package magit
   :ensure t
-  :bind ("C-x s" . magit-status)
+  :bind (("C-x s" . magit-status)
+         ("C-c f" . magit-file-popup))
   :init (add-hook 'git-commit-mode-hook 'flyspell-mode)
   :config (progn
             (setq magit-diff-refine-hunk 'all
