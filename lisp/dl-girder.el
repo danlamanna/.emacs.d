@@ -6,14 +6,14 @@
                                  (f-exists? (f-join dir "setup.py"))))))
 
 (defun girder-setup-python-buffer()
-  (when-let* (girder-dir (girder-dir?))
+  (when-let* ((girder-dir (girder-dir?)))
     (set (make-local-variable 'flycheck-flake8rc) (f-join girder-dir "tests/flake8.cfg"))))
 
 (add-hook 'python-mode-hook 'girder-setup-python-buffer)
 
 (defun girder-setup-js-buffer()
     (nvm-use-for)
-  (when-let* (girder-dir (girder-dir?))
+  (when-let* ((girder-dir (girder-dir?)))
     (set (make-local-variable 'flycheck-javascript-eslint-executable)
          (f-join girder-dir "node_modules/.bin/eslint"))
     (set (make-local-variable 'flycheck-eslintrc)
