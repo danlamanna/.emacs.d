@@ -4,8 +4,6 @@
     For now, this doesn't offer anything especially useful over the deprecated ansible-doc.el.
   https://github.com/k1LoW/emacs-ansible/issues/14
 * TODO Use dired as a file manager                                    :dired:
-* TODO Github like empty directory traversal in dired                 :dired:
-  https://fuco1.github.io/2017-07-15-Collapse-unique-nested-paths-in-dired-with-dired-collapse-mode.html
 * TODO Look into scheduled organization of TODOs                        :org:
 * TODO Magit ediff all files in selection                             :magit:
 * TODO Stop opening things in opposite buffers

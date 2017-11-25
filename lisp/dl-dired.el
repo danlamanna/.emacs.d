@@ -29,6 +29,10 @@
             (define-key dired-mode-map
               (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)))
 
+(use-package dired-collapse
+  :ensure t
+  :init (add-hook 'dired-mode-hook 'dired-collapse-mode))
+
 (use-package dired-quick-sort
   :ensure t
   :config
