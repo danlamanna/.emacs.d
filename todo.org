@@ -80,3 +80,9 @@
   - browse-url-of-dired-file
   - New tramp connection method "gdrive"
 * TODO Disable swiper while recording a macro
+* TODO Look into lpy :python:
+  https://github.com/abo-abo/lpy
+* TODO Look into use-package-ensure-system-package
+  https://github.com/waymondo/use-package-ensure-system-package
+
+  Might be useful for pip installing epc/jedi etc.
