@@ -33,6 +33,7 @@
   :after (ivy)
   :config (ivy-set-display-transformer 'ivy-switch-buffer 'ivy-rich-switch-buffer-transformer))
 
+;; This is needed to order M-x by most recent commands
 (use-package smex
   :ensure t)
 
