@@ -45,9 +45,6 @@
   Is this worth it, how would syncing dictionaries of valid non-english "words" work?
 * magithub                                                            :magit:
   https://github.com/vermiculus/magithub
-* no-littering
-  https://manuel-uberti.github.io/programming/2017/06/17/nolittering/
-  https://github.com/emacscollective/no-littering
 * shrink-whitespace
   https://github.com/jcpetkovich/shrink-whitespace.el
   Unify this and just-one-space.

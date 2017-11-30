@@ -9,14 +9,12 @@
 
 (require 'use-package)
 
+(use-package no-littering
+  :ensure t
+  :demand t)
+
 (use-package f
   :ensure t)
-
-;; Setup tmp dirs
-(setq emacs-tmp-dir (f-join user-emacs-directory "tmp"))
-(setq emacs-autosave-dir (f-join user-emacs-directory "autosaves"))
-
-(set-face-attribute 'default t :font "-simp-Hack-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1")
 
 (when (f-exists? "~/bin")
   (add-to-list 'exec-path "~/bin"))
@@ -389,9 +387,6 @@ and it's name isn't in no-cleanup-filenames."
 (use-package yasnippet
   :ensure t
   :config (progn
-            (custom-set-variables
-             '(yas-snippet-dirs "~/.emacs.d/etc/snippets"))
-
             (yas-global-mode 1)
             (yas-reload-all)))
 
