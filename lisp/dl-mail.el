@@ -37,7 +37,7 @@
                            :sort-order 'newest-first
                            :search-type 'tree)
                     (:name "unread"
-                           :query "tag:unread and not tag:ignore"
+                           :query "tag:unread and not tag:ignore and not tag:draft"
                            :key "u"
                            :sort-order 'newest-first
                            :search-type 'tree)
