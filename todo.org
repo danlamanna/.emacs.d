@@ -83,3 +83,10 @@
   https://github.com/waymondo/use-package-ensure-system-package
 
   Might be useful for pip installing epc/jedi etc.
+* TODO Setup magit-imerge :magit:
+  https://github.com/magit/magit-imerge
+* TODO Allow for @nick autocompletion in Circe
+  Random notes:
+  - Replacing `circe--completion-at-point' in `completion-at-point-functions'
+  - Look into lui-complete-function
+  - Advise `circe--completion-candidates'
