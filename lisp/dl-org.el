@@ -21,7 +21,7 @@
             ;; org-babel
             (org-babel-do-load-languages
              'org-babel-load-languages
-             '((sh . t)
+             '((shell . t)
                (emacs-lisp . nil)
                (python . t)))
 
