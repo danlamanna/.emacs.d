@@ -7,7 +7,8 @@
 
 (defun girder-setup-python-buffer()
   (when-let* ((girder-dir (girder-dir?)))
-    (set (make-local-variable 'flycheck-flake8rc) (f-join girder-dir "tests/flake8.cfg"))))
+    (if (f-exists? (f-join girder-dir "tests/flake8.cfg"))
+        (set (make-local-variable 'flycheck-flake8rc) (f-join girder-dir "tests/flake8.cfg")))))
 
 (add-hook 'python-mode-hook 'girder-setup-python-buffer)
 
