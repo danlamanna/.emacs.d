@@ -19,6 +19,9 @@
 (when (f-exists? "~/bin")
   (add-to-list 'exec-path "~/bin"))
 
+(when (f-exists? "~/.local/bin")
+  (add-to-list 'exec-path "~/.local/bin"))
+
 (use-package dl-swiper
   :load-path "lisp/")
 
