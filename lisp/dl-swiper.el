@@ -14,7 +14,7 @@
   :ensure t
   :demand t
   :after (counsel projectile)
-  :config (counsel-projectile-on))
+  :config (counsel-projectile-mode))
 
 (use-package ivy
   :ensure t
