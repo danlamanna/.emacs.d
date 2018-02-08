@@ -72,6 +72,8 @@
 ** TODO org-agenda should show mail when a notmuch link is in a task :org:
 ** TODO Backlinking view in notmuch
 ** TODO notmuch "w" show attachments and dired-target-dwim :dired:
+** TODO Look into ViewAction support in notmuch
+   http://schema.org/ViewAction
 * New 26.1 features
   - wdired-create-parent-directories variable
   - browse-url-of-dired-file
@@ -90,3 +92,4 @@
   - Replacing `circe--completion-at-point' in `completion-at-point-functions'
   - Look into lui-complete-function
   - Advise `circe--completion-candidates'
+* TODO Add visual-regexp-steroids
