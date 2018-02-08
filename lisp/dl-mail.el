@@ -32,17 +32,17 @@
   :config (progn
             (setq notmuch-saved-searches
                   '((:name "inbox"
-                           :query "tag:inbox and not tag:ignore and date:7d.."
+                           :query "tag:inbox and not tag:flagged and date:7d.."
                            :key "i"
                            :sort-order 'newest-first
                            :search-type 'tree)
                     (:name "unread"
-                           :query "tag:unread and not tag:ignore and not tag:draft"
+                           :query "tag:unread and not tag:flagged and not tag:draft"
                            :key "u"
                            :sort-order 'newest-first
                            :search-type 'tree)
                     (:name "girder"
-                           :query "(tag:girder or tag:girder-users or tag:girder-devel) and not tag:ignore"
+                           :query "(tag:girder or tag:girder-users or tag:girder-devel) and not tag:flagged"
                            :key "g"
                            :sort-order 'newest-first
                            :search-type 'tree)))
