@@ -93,3 +93,15 @@
   - Look into lui-complete-function
   - Advise `circe--completion-candidates'
 * TODO Add visual-regexp-steroids
+* TODO Setup org-notify                                                 :org:
+  http://orgmode.org/w/?p=org-mode.git;a=blob_plain;f=contrib/lisp/org-notify.el;hb=HEAD
+* TODO Setup auto-archival of DONE items > some time period             :org:
+* TODO Better resource integration with org                             :org:
+  Using keychords to open relevant resources (email, PRs, etc)
+* TODO Implement org-protocol for capturing from other windows          :org:
+  http://orgmode.org/worg/org-contrib/org-protocol.html
+* TODO Look into perspective.el
+  https://github.com/nex3/perspective-el
+* TODO Investigate company-shell
+  https://github.com/Alexander-Miller/company-shell
+* TODO http://endlessparentheses.com/use-org-mode-links-for-absolutely-anything.html :org:
