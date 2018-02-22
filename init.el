@@ -39,9 +39,8 @@
   :config (progn
             (setq browse-url-browser-function '((".*.patch" . browse-url-emacs)
                                                 ("." . browse-url-generic))
-                  browse-url-generic-program (or (executable-find "google-chrome")
-                                                 (executable-find "chromium")
-                                                 (executable-find "firefox")))))
+                  browse-url-generic-program (or (executable-find "firefox")
+                                                 (executable-find "chromium")))))
 
 (use-package cmake-mode
   :ensure t)
