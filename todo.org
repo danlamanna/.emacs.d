@@ -105,3 +105,4 @@
 * TODO Investigate company-shell
   https://github.com/Alexander-Miller/company-shell
 * TODO http://endlessparentheses.com/use-org-mode-links-for-absolutely-anything.html :org:
+* TODO Look into auto-indenting pasted code
